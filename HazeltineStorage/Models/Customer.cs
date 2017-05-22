@@ -9,7 +9,8 @@ namespace HazeltineStorage.Models
     {
         public int Id { get; set; }
         public string ApplicationUserId { get; set; }
-        public string Type { get; set; }
+        public CustomerType CustomerType { get; set; }
+        public byte CustomerTypeId { get; set; }
         public string Status { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

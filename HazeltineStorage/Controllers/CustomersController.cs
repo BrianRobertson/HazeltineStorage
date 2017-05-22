@@ -17,7 +17,8 @@ namespace HazeltineStorage.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            var customers = db.Customers.Include(c => c.CustomerType);
+            return View(customers.ToList());
         }
 
         // GET: Customers/Details/5
@@ -38,6 +39,7 @@ namespace HazeltineStorage.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace HazeltineStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,Type,Status,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,CustomerTypeId,Status,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
         }
 
@@ -70,6 +73,7 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
         }
 
@@ -78,7 +82,7 @@ namespace HazeltineStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,Type,Status,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,CustomerTypeId,Status,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
         }
 

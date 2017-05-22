@@ -1,5 +1,6 @@
 namespace HazeltineStorage.Migrations
 {
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,15 @@ namespace HazeltineStorage.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.CustomerTypes.AddOrUpdate(
+                x => x.Id,
+                new CustomerType { Id = 1, TypeDescription = "" },
+                new CustomerType { Id = 2, TypeDescription = "Prospect"},
+                new CustomerType { Id = 3, TypeDescription = "Active" },
+                new CustomerType { Id = 4, TypeDescription = "Not Active" }
+                );
+
+
         }
     }
 }
