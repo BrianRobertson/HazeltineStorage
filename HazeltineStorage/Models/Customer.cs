@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,17 +9,21 @@ namespace HazeltineStorage.Models
 {
     public class Customer
     {
+        [Key]
         public int Id { get; set; }
-        [Display(Name = "Application User Id")]
+
         public string ApplicationUserId { get; set; }
-        //public virtual ApplicationUserId { get; set; }
-        //drop down of user names to align with a customer.
-        [Display(Name = "Customer Type")]
+        [ForeignKey("ApplicationUserId")]
+        public virtual ApplicationUser ApplicationUser{ get; set; }
+
         public byte CustomerTypeId { get; set; }
+        [ForeignKey("CustomerTypeId")]
         public virtual CustomerType CustomerType { get; set; }
-        [Display(Name = "Customer Status")]
+
         public byte CustomerStatusId { get; set; }
+        [ForeignKey("CustomerStatusId")]
         public virtual CustomerStatus CustomerStatus { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]

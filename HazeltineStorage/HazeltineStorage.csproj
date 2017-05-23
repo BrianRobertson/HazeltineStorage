@@ -190,8 +190,13 @@
     <Compile Include="Migrations\201705230317263_AddCustomerStatusModel.Designer.cs">
       <DependentUpon>201705230317263_AddCustomerStatusModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705231856275_AddApplicationUserFKtoCustomerModel.cs" />
+    <Compile Include="Migrations\201705231856275_AddApplicationUserFKtoCustomerModel.Designer.cs">
+      <DependentUpon>201705231856275_AddApplicationUserFKtoCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerStatus.cs" />
     <Compile Include="Models\CustomerType.cs" />
@@ -284,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705230317263_AddCustomerStatusModel.resx">
       <DependentUpon>201705230317263_AddCustomerStatusModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705231856275_AddApplicationUserFKtoCustomerModel.resx">
+      <DependentUpon>201705231856275_AddApplicationUserFKtoCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

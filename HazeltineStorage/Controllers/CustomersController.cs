@@ -17,7 +17,7 @@ namespace HazeltineStorage.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = db.Customers.Include(c => c.CustomerStatus).Include(c => c.CustomerType);
+            var customers = db.Customers.Include(c => c.ApplicationUser).Include(c => c.CustomerStatus).Include(c => c.CustomerType);
             return View(customers.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace HazeltineStorage.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email");
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription");
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription");
             return View();
@@ -58,6 +59,7 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", customer.ApplicationUserId);
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
@@ -75,6 +77,7 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", customer.ApplicationUserId);
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
@@ -93,6 +96,7 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", customer.ApplicationUserId);
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
