@@ -186,9 +186,14 @@
     <Compile Include="Migrations\201705221930348_AddCustomerType.Designer.cs">
       <DependentUpon>201705221930348_AddCustomerType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705230317263_AddCustomerStatusModel.cs" />
+    <Compile Include="Migrations\201705230317263_AddCustomerStatusModel.Designer.cs">
+      <DependentUpon>201705230317263_AddCustomerStatusModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerStatus.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -276,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705221930348_AddCustomerType.resx">
       <DependentUpon>201705221930348_AddCustomerType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705230317263_AddCustomerStatusModel.resx">
+      <DependentUpon>201705230317263_AddCustomerStatusModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

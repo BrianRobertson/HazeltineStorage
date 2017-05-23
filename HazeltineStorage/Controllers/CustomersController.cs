@@ -17,7 +17,7 @@ namespace HazeltineStorage.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = db.Customers.Include(c => c.CustomerType);
+            var customers = db.Customers.Include(c => c.CustomerStatus).Include(c => c.CustomerType);
             return View(customers.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace HazeltineStorage.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription");
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription");
             return View();
         }
@@ -48,7 +49,7 @@ namespace HazeltineStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,CustomerTypeId,Status,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +58,7 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
         }
@@ -73,6 +75,7 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
         }
@@ -82,7 +85,7 @@ namespace HazeltineStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,CustomerTypeId,Status,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,7 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             return View(customer);
         }

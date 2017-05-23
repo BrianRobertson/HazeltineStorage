@@ -28,13 +28,21 @@ namespace HazeltineStorage.Migrations
             //    );
             //
             context.CustomerTypes.AddOrUpdate(
-                x => x.Id,
-                new CustomerType { Id = 1, TypeDescription = "" },
+                ct => ct.Id,
+                new CustomerType { Id = 1, TypeDescription = "--Select One--" },
                 new CustomerType { Id = 2, TypeDescription = "Prospect"},
                 new CustomerType { Id = 3, TypeDescription = "Active" },
                 new CustomerType { Id = 4, TypeDescription = "Not Active" }
                 );
 
+            context.CustomerStatus.AddOrUpdate(
+                cs => cs.Id,
+                new CustomerStatus { Id = 1, StatusDescription = "--Select One--" },
+                new CustomerStatus { Id = 2, StatusDescription = "Good" },
+                new CustomerStatus { Id = 3, StatusDescription = "Past Due" },
+                new CustomerStatus { Id = 4, StatusDescription = "Auction" },
+                new CustomerStatus { Id = 5, StatusDescription = "D List" }
+                );
 
         }
     }
