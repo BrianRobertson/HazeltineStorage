@@ -9,12 +9,16 @@ namespace HazeltineStorage.Models
 {
     public class Customer
     {
+        public Customer()
+        {
+            Contracts = new List<Contract>();
+        }
         [Key]
         public int Id { get; set; }
 
         public string ApplicationUserId { get; set; }
         [ForeignKey("ApplicationUserId")]
-        public virtual ApplicationUser ApplicationUser{ get; set; }
+        public virtual ApplicationUser ApplicationUser{ get; set; }//change to User, it might help with scaffolding.
 
         public byte CustomerTypeId { get; set; }
         [ForeignKey("CustomerTypeId")]
@@ -50,5 +54,7 @@ namespace HazeltineStorage.Models
         public bool EmailInvoice { get; set; }
         [Display(Name = "Customer Balance")]
         public decimal CustomerBalance { get; set; }
+
+        public virtual ICollection<Contract> Contracts { get; set; }
     }
 }

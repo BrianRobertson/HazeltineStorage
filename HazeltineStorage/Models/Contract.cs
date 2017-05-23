@@ -9,17 +9,27 @@ namespace HazeltineStorage.Models
 {
     public class Contract
     {
+        public Contract()
+        {
+            Products = new List<Product>();
+        }
         [Key]
         public int Id { get; set; }
         public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
+        [Display(Name = "End Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
+        [Display(Name = "Day of Month Due")]
         public int DueDate { get; set; }
+        [Display(Name = "Day of Month Grace Period Ends")]
         public int GracePeriod { get; set; }
-        // Tables to be populated by product rate card.
-
-
-
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

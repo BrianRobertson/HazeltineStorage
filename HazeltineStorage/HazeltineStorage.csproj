@@ -194,6 +194,14 @@
     <Compile Include="Migrations\201705231856275_AddApplicationUserFKtoCustomerModel.Designer.cs">
       <DependentUpon>201705231856275_AddApplicationUserFKtoCustomerModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705232136272_AddContractModel.cs" />
+    <Compile Include="Migrations\201705232136272_AddContractModel.Designer.cs">
+      <DependentUpon>201705232136272_AddContractModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705232240530_AddedProductModel.cs" />
+    <Compile Include="Migrations\201705232240530_AddedProductModel.Designer.cs">
+      <DependentUpon>201705232240530_AddedProductModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -202,6 +210,7 @@
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -292,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705231856275_AddApplicationUserFKtoCustomerModel.resx">
       <DependentUpon>201705231856275_AddApplicationUserFKtoCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705232136272_AddContractModel.resx">
+      <DependentUpon>201705232136272_AddContractModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705232240530_AddedProductModel.resx">
+      <DependentUpon>201705232240530_AddedProductModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
