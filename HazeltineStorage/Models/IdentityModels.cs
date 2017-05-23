@@ -36,5 +36,10 @@ namespace HazeltineStorage.Models
         public DbSet<CustomerStatus> CustomerStatus { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Product> Products { get; set; }
+        //add Invoice.
+        //add Activity log.
+        //add Message minder.
+        //add Deposit minder.
+        //add API or channel minder?
     }
 }

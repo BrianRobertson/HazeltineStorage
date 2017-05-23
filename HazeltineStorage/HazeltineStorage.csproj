@@ -204,12 +204,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ActivityLog.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerStatus.cs" />
     <Compile Include="Models\CustomerType.cs" />
+    <Compile Include="Models\DepositMinder.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MessageMinder.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
