@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201705232240530_AddedProductModel.Designer.cs">
       <DependentUpon>201705232240530_AddedProductModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705241907099_ChangedCustomerFKApplicationUserIdToUserId.cs" />
+    <Compile Include="Migrations\201705241907099_ChangedCustomerFKApplicationUserIdToUserId.Designer.cs">
+      <DependentUpon>201705241907099_ChangedCustomerFKApplicationUserIdToUserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityLog.cs" />
@@ -312,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705232240530_AddedProductModel.resx">
       <DependentUpon>201705232240530_AddedProductModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241907099_ChangedCustomerFKApplicationUserIdToUserId.resx">
+      <DependentUpon>201705241907099_ChangedCustomerFKApplicationUserIdToUserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

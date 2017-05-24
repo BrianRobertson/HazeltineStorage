@@ -16,9 +16,9 @@ namespace HazeltineStorage.Models
         [Key]
         public int Id { get; set; }
 
-        public string ApplicationUserId { get; set; }
-        [ForeignKey("ApplicationUserId")]
-        public virtual ApplicationUser ApplicationUser{ get; set; }//change to User, it might help with scaffolding.
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }//change to "User" prior to next rescaffolding of controler & views, it might help with scaffolding.
 
         public byte CustomerTypeId { get; set; }
         [ForeignKey("CustomerTypeId")]
@@ -46,8 +46,11 @@ namespace HazeltineStorage.Models
         public string MobilePhone { get; set; }
         [Display(Name = "Text Notification")]
         public bool TextNotification { get; set; }
+
         [Display(Name = "Email Address")]
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
+
         [Display(Name = "Email Notification")]
         public bool EmailNotification { get; set; }
         [Display(Name = "Email Invoice")]
