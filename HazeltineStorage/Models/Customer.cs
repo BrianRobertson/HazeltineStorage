@@ -12,13 +12,15 @@ namespace HazeltineStorage.Models
         public Customer()
         {
             Contracts = new List<Contract>();
+            Invoices = new List<Invoice>();
+            Activities = new List<ActivityLog>();
         }
         [Key]
         public int Id { get; set; }
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public virtual ApplicationUser User { get; set; }//change to "User" prior to next rescaffolding of controler & views, it might help with scaffolding.
+        public virtual ApplicationUser User { get; set; }
 
         public byte CustomerTypeId { get; set; }
         [ForeignKey("CustomerTypeId")]
@@ -32,6 +34,7 @@ namespace HazeltineStorage.Models
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
         [Display(Name = "Address Line 1")]
         public string Address1 { get; set; }
         [Display(Name = "Address Line 2")]
@@ -40,6 +43,7 @@ namespace HazeltineStorage.Models
         public string State { get; set; }
         [Display(Name = "Zip Code")]
         public string Zip { get; set; }
+
         [Display(Name = "Main Phone")]
         public string MainPhone { get; set; }
         [Display(Name = "Mobile Phone")]
@@ -50,14 +54,16 @@ namespace HazeltineStorage.Models
         [Display(Name = "Email Address")]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
-
         [Display(Name = "Email Notification")]
         public bool EmailNotification { get; set; }
         [Display(Name = "Email Invoice")]
         public bool EmailInvoice { get; set; }
+
         [Display(Name = "Customer Balance")]
         public decimal CustomerBalance { get; set; }
 
         public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<ActivityLog> Activities { get; set; }
     }
 }

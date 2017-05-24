@@ -15,6 +15,7 @@ namespace HazeltineStorage.Models
         }
         [Key]
         public int Id { get; set; }
+
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
@@ -30,9 +31,16 @@ namespace HazeltineStorage.Models
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Day of Month Due")]
-        public int DueDate { get; set; }
+        [Range(1,31)]
+        public int DayOfMonthDue { get; set; }
+
         [Display(Name = "Day of Month Grace Period Ends")]
-        public int GracePeriod { get; set; }
+        [Range(1,31)]
+        public int DayOfMonthGracePeriodEnds { get; set; }
+        
+        [Display(Name = "Contract Total")]
+        public decimal ContractTotal { get; set; }
+
         public virtual ICollection<Product> Products { get; set; }
     }
 }

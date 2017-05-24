@@ -206,6 +206,26 @@
     <Compile Include="Migrations\201705241907099_ChangedCustomerFKApplicationUserIdToUserId.Designer.cs">
       <DependentUpon>201705241907099_ChangedCustomerFKApplicationUserIdToUserId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705242039131_ChangesToContractTable.cs" />
+    <Compile Include="Migrations\201705242039131_ChangesToContractTable.Designer.cs">
+      <DependentUpon>201705242039131_ChangesToContractTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242203074_AddInvoiceTable.cs" />
+    <Compile Include="Migrations\201705242203074_AddInvoiceTable.Designer.cs">
+      <DependentUpon>201705242203074_AddInvoiceTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242227341_AddActivityLogTable.cs" />
+    <Compile Include="Migrations\201705242227341_AddActivityLogTable.Designer.cs">
+      <DependentUpon>201705242227341_AddActivityLogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242252400_AddMessageTable.cs" />
+    <Compile Include="Migrations\201705242252400_AddMessageTable.Designer.cs">
+      <DependentUpon>201705242252400_AddMessageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242305540_AddFKofMessageToActivityLogTable.cs" />
+    <Compile Include="Migrations\201705242305540_AddFKofMessageToActivityLogTable.Designer.cs">
+      <DependentUpon>201705242305540_AddFKofMessageToActivityLogTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityLog.cs" />
@@ -217,7 +237,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MessageMinder.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -319,6 +339,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705241907099_ChangedCustomerFKApplicationUserIdToUserId.resx">
       <DependentUpon>201705241907099_ChangedCustomerFKApplicationUserIdToUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242039131_ChangesToContractTable.resx">
+      <DependentUpon>201705242039131_ChangesToContractTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242203074_AddInvoiceTable.resx">
+      <DependentUpon>201705242203074_AddInvoiceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242227341_AddActivityLogTable.resx">
+      <DependentUpon>201705242227341_AddActivityLogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242252400_AddMessageTable.resx">
+      <DependentUpon>201705242252400_AddMessageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242305540_AddFKofMessageToActivityLogTable.resx">
+      <DependentUpon>201705242305540_AddFKofMessageToActivityLogTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
