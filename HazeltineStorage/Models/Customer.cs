@@ -14,6 +14,7 @@ namespace HazeltineStorage.Models
             Contracts = new List<Contract>();
             Invoices = new List<Invoice>();
             Activities = new List<ActivityLog>();
+            Payments = new List<Payment>();
         }
         [Key]
         public int Id { get; set; }
@@ -65,5 +66,6 @@ namespace HazeltineStorage.Models
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual ICollection<Invoice> Invoices { get; set; }
         public virtual ICollection<ActivityLog> Activities { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

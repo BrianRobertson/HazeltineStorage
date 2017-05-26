@@ -226,6 +226,18 @@
     <Compile Include="Migrations\201705242305540_AddFKofMessageToActivityLogTable.Designer.cs">
       <DependentUpon>201705242305540_AddFKofMessageToActivityLogTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705262017537_AddPaymentTable.cs" />
+    <Compile Include="Migrations\201705262017537_AddPaymentTable.Designer.cs">
+      <DependentUpon>201705262017537_AddPaymentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705262034546_AddPaymentTypeTable.cs" />
+    <Compile Include="Migrations\201705262034546_AddPaymentTypeTable.Designer.cs">
+      <DependentUpon>201705262034546_AddPaymentTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705262105206_AddFKPaymentTypeToPaymentTable.cs" />
+    <Compile Include="Migrations\201705262105206_AddFKPaymentTypeToPaymentTable.Designer.cs">
+      <DependentUpon>201705262105206_AddFKPaymentTypeToPaymentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityLog.cs" />
@@ -233,11 +245,12 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerStatus.cs" />
     <Compile Include="Models\CustomerType.cs" />
-    <Compile Include="Models\DepositMinder.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\PaymentType.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -354,6 +367,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705242305540_AddFKofMessageToActivityLogTable.resx">
       <DependentUpon>201705242305540_AddFKofMessageToActivityLogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705262017537_AddPaymentTable.resx">
+      <DependentUpon>201705262017537_AddPaymentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705262034546_AddPaymentTypeTable.resx">
+      <DependentUpon>201705262034546_AddPaymentTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705262105206_AddFKPaymentTypeToPaymentTable.resx">
+      <DependentUpon>201705262105206_AddFKPaymentTypeToPaymentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -44,6 +44,15 @@ namespace HazeltineStorage.Migrations
                 new CustomerStatus { Id = 5, StatusDescription = "D List" }
                 );
 
+            context.PaymentTypes.AddOrUpdate(
+                pt => pt.Id,
+                new PaymentType { Id = 1, PaymentTypeName = "--Select One--" },
+                new PaymentType { Id = 2, PaymentTypeName = "Website" },
+                new PaymentType { Id = 3, PaymentTypeName = "Mail" },
+                new PaymentType { Id = 4, PaymentTypeName = "Drop Box" },
+                new PaymentType { Id = 5, PaymentTypeName = "In Person" }
+                );
+
         }
     }
 }
