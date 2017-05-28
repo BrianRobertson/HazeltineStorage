@@ -17,7 +17,7 @@ namespace HazeltineStorage.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = db.Customers.Include(c => c.User).Include(c => c.CustomerStatus).Include(c => c.CustomerType);
+            var customers = db.Customers.Include(c => c.CustomerStatus).Include(c => c.CustomerType).Include(c => c.User);
             return View(customers.ToList());
         }
 
@@ -39,9 +39,9 @@ namespace HazeltineStorage.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription");
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace HazeltineStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,UserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance,CustomerNote")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -59,11 +59,46 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
             return View(customer);
         }
+
+        //Brian added below code:
+
+        // GET: Customers/Inquiry
+        public ActionResult Inquire()
+        {
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription");
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
+            return View();
+        }
+
+        // POST: Customers/NewInquiry
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Inquire([Bind(Include = "Id,UserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance,CustomerNote")] Customer customer)
+        //public ActionResult Inquire([Bind(Include = "FirstName,LastName,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,CustomerNote")] Customer customer)
+        // I tried only listed items. It didn't work.
+        {
+            if (ModelState.IsValid)
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");// redirect to thank you page.
+            }
+
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
+            return View(customer);
+        }
+
+        //Brian added above code.
 
         // GET: Customers/Edit/5
         public ActionResult Edit(int? id)
@@ -77,9 +112,9 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
             return View(customer);
         }
 
@@ -88,7 +123,7 @@ namespace HazeltineStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,UserId,CustomerTypeId,CustomerStatusId,FirstName,LastName,Address1,Address2,City,State,Zip,MainPhone,MobilePhone,TextNotification,EmailAddress,EmailNotification,EmailInvoice,CustomerBalance,CustomerNote")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -96,9 +131,9 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
             ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
             return View(customer);
         }
 

@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201705262105206_AddFKPaymentTypeToPaymentTable.Designer.cs">
       <DependentUpon>201705262105206_AddFKPaymentTypeToPaymentTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705271940131_AddCustomerNote.cs" />
+    <Compile Include="Migrations\201705271940131_AddCustomerNote.Designer.cs">
+      <DependentUpon>201705271940131_AddCustomerNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityLog.cs" />
@@ -316,6 +320,7 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\Inquire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -376,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705262105206_AddFKPaymentTypeToPaymentTable.resx">
       <DependentUpon>201705262105206_AddFKPaymentTypeToPaymentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705271940131_AddCustomerNote.resx">
+      <DependentUpon>201705271940131_AddCustomerNote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

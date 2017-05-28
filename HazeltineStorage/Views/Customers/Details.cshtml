@@ -11,14 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.User.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CustomerStatus.StatusDescription)
         </dt>
 
@@ -32,6 +24,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.CustomerType.TypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
         </dd>
 
         <dt>
@@ -144,6 +144,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.CustomerBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerNote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerNote)
         </dd>
 
     </dl>

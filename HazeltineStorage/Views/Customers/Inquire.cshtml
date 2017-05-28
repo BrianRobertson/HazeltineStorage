@@ -1,20 +1,19 @@
 ﻿@model HazeltineStorage.Models.Customer
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Inquire";
 }
 
-<h2>Create</h2>
+<h2>Inquire Here</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Inquire", "Customers")) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>Customer</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.UserId, "UserId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -37,7 +36,7 @@
                 @Html.DropDownList("CustomerStatusId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CustomerStatusId, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -55,7 +54,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Address1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })
@@ -93,7 +92,7 @@
                 @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.MainPhone, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -139,7 +138,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.EmailInvoice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -155,7 +154,7 @@
                 @Html.EditorFor(model => model.CustomerBalance, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CustomerBalance, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerNote, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -165,9 +164,23 @@
             </div>
         </div>
 
+        @*hidden fields, this stopped error but it still doesn't save data.*@
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.CustomerTypeId)
+        @Html.HiddenFor(model => model.CustomerStatusId)
+        @Html.HiddenFor(model => model.Address1)
+        @Html.HiddenFor(model => model.Address2)
+        @Html.HiddenFor(model => model.City)
+        @Html.HiddenFor(model => model.State)
+        @Html.HiddenFor(model => model.Zip)
+        @Html.HiddenFor(model => model.EmailInvoice)
+        @Html.HiddenFor(model => model.CustomerBalance)
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Inquire" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -176,7 +189,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
