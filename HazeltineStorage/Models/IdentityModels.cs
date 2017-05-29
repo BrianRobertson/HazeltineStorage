@@ -41,5 +41,7 @@ namespace HazeltineStorage.Models
         public DbSet<Message> Messages { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
+
+        //public System.Data.Entity.DbSet<HazeltineStorage.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
