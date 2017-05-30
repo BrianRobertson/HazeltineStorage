@@ -36,6 +36,24 @@ namespace HazeltineStorage.Controllers
             return View(payment);
         }
 
+        // GET: Payments/Details/5 Read Only
+        public ActionResult DetailsReadOnly(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(payment);
+        }
+
+
+
+
         // GET: Payments/Create
         public ActionResult Create()
         {

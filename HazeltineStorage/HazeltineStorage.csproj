@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\HazeltineCustomerController.cs" />
     <Compile Include="Controllers\HazeltineManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoicesController.cs" />
@@ -365,6 +366,11 @@
     <Content Include="Views\Messages\Details.cshtml" />
     <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\HazeltineCustomer\Index.cshtml" />
+    <Content Include="Views\Customers\DetailsReadOnly.cshtml" />
+    <Content Include="Views\Contracts\DetailsReadOnly.cshtml" />
+    <Content Include="Views\Invoices\DetailsReadOnly.cshtml" />
+    <Content Include="Views\Payments\DetailsReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

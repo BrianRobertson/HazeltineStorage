@@ -36,6 +36,22 @@ namespace HazeltineStorage.Controllers
             return View(contract);
         }
 
+        // GET: Contracts/Details/5 ReadOnly.
+        public ActionResult DetailsReadOnly(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contract contract = db.Contracts.Find(id);
+            if (contract == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contract);
+        }
+
+
         // GET: Contracts/Create
         public ActionResult Create()
         {

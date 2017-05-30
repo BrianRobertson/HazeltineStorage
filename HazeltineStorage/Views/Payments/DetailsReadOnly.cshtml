@@ -1,0 +1,67 @@
+﻿@model HazeltineStorage.Models.Payment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentType.PaymentTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentType.PaymentTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountReceived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountReceived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepositDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to My Account", "Index", "HazeltineCustomer")
+</p>

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Account at Hazeltine Storage</h2>
+
+<br />
+<hr />
+<br />
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <p><a href="~/Customers/DetailsReadOnly/8" class="btn btn-primary btn-lg">My Account Info</a></p>
+        @*@Html.ActionLink("Details", "Details", "HazeltineCustomer", new { id = 2 })*@
+
+    </div>
+    <div class="col-md-3">
+
+        <p><a href="~/Contracts/DetailsReadOnly/2" class="btn btn-primary btn-lg">My Contracts</a></p>
+
+    </div>
+    <div class="col-md-3">
+
+        <p><a href="~/Invoices/DetailsReadOnly/1" class="btn btn-primary btn-lg">My Invoices</a></p>
+
+    </div>
+    <div class="col-md-3">
+
+        <p><a href="~/Payments/DetailsReadOnly/1" class="btn btn-primary btn-lg">My Payments</a></p>
+
+    </div>
+</div>

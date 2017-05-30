@@ -36,6 +36,22 @@ namespace HazeltineStorage.Controllers
             return View(invoice);
         }
 
+        // GET: Invoices/Details/5 Read Only
+        public ActionResult DetailsReadOnly(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Invoice invoice = db.Invoices.Find(id);
+            if (invoice == null)
+            {
+                return HttpNotFound();
+            }
+            return View(invoice);
+        }
+
+
         // GET: Invoices/Create
         public ActionResult Create()
         {
