@@ -1,0 +1,50 @@
+﻿@model HazeltineStorage.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Message</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageChannel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageChannel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageContent)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

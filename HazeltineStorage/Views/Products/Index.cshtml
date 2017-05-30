@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HazeltineStorage.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Storage Unit Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Contracts.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TermAtRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RentalRate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contracts.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TermAtRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RentalRate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "HazeltineManager")
+</div>

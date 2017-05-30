@@ -1,0 +1,67 @@
+﻿@model IEnumerable<HazeltineStorage.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Payments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentType.PaymentTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountReceived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepositDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentType.PaymentTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceivedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountReceived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepositDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "HazeltineManager")
+</div>

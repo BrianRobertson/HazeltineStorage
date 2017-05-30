@@ -1,0 +1,58 @@
+﻿@model HazeltineStorage.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contracts.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contracts.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TermAtRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TermAtRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RentalRate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

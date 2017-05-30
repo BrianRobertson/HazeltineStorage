@@ -1,0 +1,64 @@
+﻿@model HazeltineStorage.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contracts.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contracts.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TermAtRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TermAtRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RentalRate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
