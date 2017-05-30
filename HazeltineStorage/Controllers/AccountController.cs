@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HazeltineStorage.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HazeltineStorage.Controllers
 {
@@ -155,6 +156,14 @@ namespace HazeltineStorage.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Temporary Code below, is used to populate database with user role and add that role to new user:
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("Name of Role Goes Here"));//Add role.
+                    //await UserManager.AddToRoleAsync(user.Id, "Name of Role Goes Here");//Add user to role.
+                    //Here ends the temporary code.
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
