@@ -10,7 +10,10 @@ namespace HazeltineStorage.Models
     {
         [Key]
         public byte Id { get; set; }
+
         [Display(Name = "Customer Status")]
         public string StatusDescription { get; set; }
+
+        public IList<Customer> Customer { get; set; }
     }
 }

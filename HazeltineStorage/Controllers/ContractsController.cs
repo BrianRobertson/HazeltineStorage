@@ -55,7 +55,7 @@ namespace HazeltineStorage.Controllers
         // GET: Contracts/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId");
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName");
             return View();
         }
 
@@ -73,7 +73,7 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", contract.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", contract.CustomerId);
             return View(contract);
         }
 
@@ -89,7 +89,7 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", contract.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", contract.CustomerId);
             return View(contract);
         }
 
@@ -106,7 +106,7 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", contract.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", contract.CustomerId);
             return View(contract);
         }
 

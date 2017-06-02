@@ -24,12 +24,12 @@ namespace HazeltineStorage.Models
         public virtual ApplicationUser User { get; set; }
 
         [Display(Name = "Customer Type")]
-        public byte CustomerTypeId { get; set; }
+        public Nullable<byte> CustomerTypeId { get; set; }
         [ForeignKey("CustomerTypeId")]
         public virtual CustomerType CustomerType { get; set; }
 
         [Display(Name = "Customer Status")]
-        public byte CustomerStatusId { get; set; }
+        public Nullable<byte> CustomerStatusId { get; set; }
         [ForeignKey("CustomerStatusId")]
         public virtual CustomerStatus CustomerStatus { get; set; }
 
@@ -63,7 +63,7 @@ namespace HazeltineStorage.Models
         public bool EmailInvoice { get; set; }
 
         [Display(Name = "Customer Balance")]
-        public decimal CustomerBalance { get; set; }
+        public decimal? CustomerBalance { get; set; }
 
         public string CustomerNote { get; set; }
 

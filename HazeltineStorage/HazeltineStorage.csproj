@@ -251,6 +251,18 @@
     <Compile Include="Migrations\201705271940131_AddCustomerNote.Designer.cs">
       <DependentUpon>201705271940131_AddCustomerNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706012117008_CustomerTypeFKIsNullableOnCustomerTable.cs" />
+    <Compile Include="Migrations\201706012117008_CustomerTypeFKIsNullableOnCustomerTable.Designer.cs">
+      <DependentUpon>201706012117008_CustomerTypeFKIsNullableOnCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706012203267_CustomerStatusFKIsNullableOnCustomerTable.cs" />
+    <Compile Include="Migrations\201706012203267_CustomerStatusFKIsNullableOnCustomerTable.Designer.cs">
+      <DependentUpon>201706012203267_CustomerStatusFKIsNullableOnCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706012212164_CustomerBalanceIsNullableOnCustomerTable.cs" />
+    <Compile Include="Migrations\201706012212164_CustomerBalanceIsNullableOnCustomerTable.Designer.cs">
+      <DependentUpon>201706012212164_CustomerBalanceIsNullableOnCustomerTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityLog.cs" />
@@ -434,6 +446,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705271940131_AddCustomerNote.resx">
       <DependentUpon>201705271940131_AddCustomerNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706012117008_CustomerTypeFKIsNullableOnCustomerTable.resx">
+      <DependentUpon>201706012117008_CustomerTypeFKIsNullableOnCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706012203267_CustomerStatusFKIsNullableOnCustomerTable.resx">
+      <DependentUpon>201706012203267_CustomerStatusFKIsNullableOnCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706012212164_CustomerBalanceIsNullableOnCustomerTable.resx">
+      <DependentUpon>201706012212164_CustomerBalanceIsNullableOnCustomerTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
