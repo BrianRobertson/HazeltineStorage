@@ -12,14 +12,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerStatus.StatusDescription)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CustomerType.TypeDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.Id)
+            @Html.DisplayNameFor(model => model.CustomerStatus.StatusDescription)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.User.Id)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -62,23 +62,23 @@
         <th>
             @Html.DisplayNameFor(model => model.CustomerBalance)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CustomerNote)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CustomerStatus.StatusDescription)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CustomerType.TypeDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.Email)
+            @Html.DisplayFor(modelItem => item.CustomerStatus.StatusDescription)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -121,9 +121,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.CustomerBalance)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CustomerNote)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

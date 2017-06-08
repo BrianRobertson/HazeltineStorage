@@ -15,16 +15,17 @@ namespace HazeltineStorage.Controllers
         // GET: ContractBuilder
         public ActionResult Index()
         {
+            
             return View();
         }
 
         //GET BuildContract
-        public ActionResult BuildContract()
-        {
-            var viewModel = new ContractBuilderViewModel();
+        //public ActionResult BuildContract()
+        //{
+        //    var viewModel = new ContractBuilderViewModel();
 
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
 
         protected override void Dispose(bool disposing)
         {

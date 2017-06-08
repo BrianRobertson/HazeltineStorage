@@ -27,10 +27,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User.Id)@*Label for UserId but use Email in list.*@
+            @*Label for UserId but use Email in list.*@
+            @Html.DisplayNameFor(model => model.User.Id)
         </dt>
 
         <dd>
+            @*Email is the more user friendly identifier.*@
             @Html.DisplayFor(model => model.User.Email)
         </dd>
 
@@ -158,7 +160,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Build Contract", "BuildContract", "ContractBuilder", new { id = Model.Id}) @*Needs overloads to send to new controller.*@
-
+    @Html.ActionLink("Back to List", "Index")
 </p>

@@ -1,0 +1,23 @@
+﻿@model HazeltineStorage.ViewModels.ContractBuilderViewModel
+@{
+    ViewBag.Title = "AddStorage";
+}
+
+
+<h2>Add Storage - This is a test.</h2>
+
+    <p>
+        @Model.Contract.Id
+    </p>
+
+@Model.Contract.StartDate
+
+@Model.Customer.FirstName
+@Model.Customer.LastName
+
+@*<ul>
+        @foreach (var product in Model.Products)
+        {
+            <li>@product.UnitNumber</li>
+        }
+    </ul>*@

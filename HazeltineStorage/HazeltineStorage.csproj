@@ -386,6 +386,7 @@
     <Content Include="Views\Invoices\DetailsReadOnly.cshtml" />
     <Content Include="Views\Payments\DetailsReadOnly.cshtml" />
     <Content Include="Views\ContractBuilder\BuildContract.cshtml" />
+    <Content Include="Views\Contracts\AddStorage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

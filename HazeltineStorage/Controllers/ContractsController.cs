@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HazeltineStorage.Models;
+using HazeltineStorage.ViewModels;
 
 namespace HazeltineStorage.Controllers
 {
@@ -36,7 +37,7 @@ namespace HazeltineStorage.Controllers
             return View(contract);
         }
 
-        // GET: Contracts/Details/5 ReadOnly.
+        // GET: Contracts/DetailsReadOnly/5 - Read Only View for Customer
         public ActionResult DetailsReadOnly(int? id)
         {
             if (id == null)
@@ -134,6 +135,28 @@ namespace HazeltineStorage.Controllers
             db.Contracts.Remove(contract);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Contracts/AddStorage/5 Add storage units to contract.
+        public ActionResult AddStorage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contract contract = db.Contracts.Find(id);
+
+            if (contract == null)
+            {
+                return HttpNotFound();
+            }
+
+            int customerId = contract.CustomerId;
+            Customer customer = db.Customers.Find(customerId);
+            
+            var viewModel = new ContractBuilderViewModel(contract, customer);
+
+            return View(viewModel);
         }
 
         protected override void Dispose(bool disposing)
