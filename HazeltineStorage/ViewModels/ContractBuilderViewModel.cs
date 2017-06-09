@@ -10,12 +10,12 @@ namespace HazeltineStorage.ViewModels
     {
         public Contract Contract { get; set; }
         public Customer Customer { get; set; }
-        public List<Product> Products { get; set; }
-        public ContractBuilderViewModel(Contract contract, Customer customer)
+        public List<StorageUnit> StorageUnits { get; set; }
+        public ContractBuilderViewModel(Contract contract, Customer customer, List<StorageUnit> storageUnits)
         {
             Contract = contract;
             Customer = customer;
-            //Products = new List<Product>();
+            StorageUnits = storageUnits;
         }
     }
 }

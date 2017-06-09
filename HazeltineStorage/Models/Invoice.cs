@@ -31,6 +31,6 @@ namespace HazeltineStorage.Models
         public Decimal TotalDue { get; set; }
 
         public virtual ICollection<Contract> Contracts { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<StorageUnit> StorageUnits { get; set; }
     }
 }

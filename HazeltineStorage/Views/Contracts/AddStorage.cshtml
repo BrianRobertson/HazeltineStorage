@@ -15,9 +15,9 @@
 @Model.Customer.FirstName
 @Model.Customer.LastName
 
-@*<ul>
-        @foreach (var product in Model.Products)
+<ul>
+        @foreach (var storageUnit in Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id))
         {
-            <li>@product.UnitNumber</li>
+            <li>@storageUnit.UnitNumber</li>
         }
-    </ul>*@
+    </ul>

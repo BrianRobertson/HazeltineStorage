@@ -7,12 +7,15 @@ using System.Web;
 
 namespace HazeltineStorage.Models
 {
-    public class Product
+    public class StorageUnit
     {
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Unit Number")]
         public string UnitNumber { get; set; }
+
+        [Display(Name = "Unit Description")]
         public string UnitDescription { get; set; }
 
         [Display(Name = "Term At Rate")]

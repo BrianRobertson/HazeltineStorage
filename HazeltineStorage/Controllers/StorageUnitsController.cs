@@ -10,112 +10,112 @@ using HazeltineStorage.Models;
 
 namespace HazeltineStorage.Controllers
 {
-    public class ProductsController : Controller
+    public class StorageUnitsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Products
+        // GET: StorageUnits
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Contracts);
-            return View(products.ToList());
+            var storageUnits = db.StorageUnits.Include(s => s.Contracts);
+            return View(storageUnits.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: StorageUnits/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            StorageUnit storageUnit = db.StorageUnits.Find(id);
+            if (storageUnit == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(storageUnit);
         }
 
-        // GET: Products/Create
+        // GET: StorageUnits/Create
         public ActionResult Create()
         {
             ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: StorageUnits/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UnitNumber,UnitDescription,TermAtRate,RentalRate,ContractId")] Product product)
+        public ActionResult Create([Bind(Include = "Id,UnitNumber,UnitDescription,TermAtRate,RentalRate,ContractId")] StorageUnit storageUnit)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.StorageUnits.Add(storageUnit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id", product.ContractId);
-            return View(product);
+            ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id", storageUnit.ContractId);
+            return View(storageUnit);
         }
 
-        // GET: Products/Edit/5
+        // GET: StorageUnits/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            StorageUnit storageUnit = db.StorageUnits.Find(id);
+            if (storageUnit == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id", product.ContractId);
-            return View(product);
+            ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id", storageUnit.ContractId);
+            return View(storageUnit);
         }
 
-        // POST: Products/Edit/5
+        // POST: StorageUnits/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UnitNumber,UnitDescription,TermAtRate,RentalRate,ContractId")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,UnitNumber,UnitDescription,TermAtRate,RentalRate,ContractId")] StorageUnit storageUnit)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(storageUnit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id", product.ContractId);
-            return View(product);
+            ViewBag.ContractId = new SelectList(db.Contracts, "Id", "Id", storageUnit.ContractId);
+            return View(storageUnit);
         }
 
-        // GET: Products/Delete/5
+        // GET: StorageUnits/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            StorageUnit storageUnit = db.StorageUnits.Find(id);
+            if (storageUnit == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(storageUnit);
         }
 
-        // POST: Products/Delete/5
+        // POST: StorageUnits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            StorageUnit storageUnit = db.StorageUnits.Find(id);
+            db.StorageUnits.Remove(storageUnit);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

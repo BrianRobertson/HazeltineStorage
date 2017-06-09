@@ -35,7 +35,7 @@ namespace HazeltineStorage.Models
         public DbSet<CustomerType> CustomerTypes { get; set; }
         public DbSet<CustomerStatus> CustomerStatus { get; set; }
         public DbSet<Contract> Contracts { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<StorageUnit> StorageUnits { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<ActivityLog> Activities { get; set; }
         public DbSet<Message> Messages { get; set; }

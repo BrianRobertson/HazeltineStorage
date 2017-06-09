@@ -11,7 +11,7 @@ namespace HazeltineStorage.Models
     {
         public Contract()
         {
-            Products = new List<Product>();
+            StorageUnits = new List<StorageUnit>();
         }
         [Key]
         public int Id { get; set; }
@@ -41,6 +41,6 @@ namespace HazeltineStorage.Models
         [Display(Name = "Contract Total")]
         public decimal ContractTotal { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<StorageUnit> StorageUnits { get; set; }
     }
 }
