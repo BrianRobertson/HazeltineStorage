@@ -155,7 +155,15 @@ namespace HazeltineStorage.Controllers
             Customer customer = db.Customers.Find(customerId);
             var storageUnits = db.StorageUnits.ToList();
 
-            var viewModel = new ContractBuilderViewModel(contract, customer, storageUnits);
+            var viewModel = new ContractBuilderViewModel
+            //(contract, customer, storageUnits);
+            {
+                Contract = contract,
+                Customer = customer,
+                StorageUnits = storageUnits
+            };
+
+            //ViewBag.storageUnits = new SelectList(db.StorageUnits, "Id", "UnitNumber", storageUnits);
 
             return View(viewModel);
         }

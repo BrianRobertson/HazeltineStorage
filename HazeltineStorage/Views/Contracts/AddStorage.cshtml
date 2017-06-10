@@ -4,9 +4,10 @@
 }
 
 
-<h2>Add Storage - This is a test.</h2>
+<h2>Add Storage</h2>
 
-    <p>
+
+    <p>  
         @Model.Contract.Id
     </p>
 
@@ -15,9 +16,20 @@
 @Model.Customer.FirstName
 @Model.Customer.LastName
 
+
 <ul>
         @foreach (var storageUnit in Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id))
         {
-            <li>@storageUnit.UnitNumber</li>
+            <li>@storageUnit.UnitNumber @storageUnit.UnitDescription @storageUnit.RentalRate</li>
         }
     </ul>
+
+
+
+@using (Html.BeginForm("AddStorage", "Contracts"))
+{
+    <div class="form-group">
+        @Html.LabelFor(su => su.StorageUnits)
+        @Html.DropDownListFor(su => su.StorageUnits, new SelectList(Model.StorageUnits, "Id", "UnitNumber"), "Select Storage Unit To Add", new { @class = "form-control" })
+    </div>
+}
