@@ -21,5 +21,8 @@ namespace HazeltineStorage.ViewModels
         //    Customer = customer;
         //    StorageUnits = storageUnits;
         //}
+        public int SelectedStorageUnitId { get; set; }
+
+        public StorageUnit SelectedStorageUnit { get; set; }
     }
 }

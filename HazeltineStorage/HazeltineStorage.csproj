@@ -359,11 +359,11 @@
     <Content Include="Views\Contracts\Details.cshtml" />
     <Content Include="Views\Contracts\Edit.cshtml" />
     <Content Include="Views\Contracts\Index.cshtml" />
-    <Content Include="Views\Manage\Invoices\Create.cshtml" />
-    <Content Include="Views\Manage\Invoices\Delete.cshtml" />
-    <Content Include="Views\Manage\Invoices\Details.cshtml" />
-    <Content Include="Views\Manage\Invoices\Edit.cshtml" />
-    <Content Include="Views\Manage\Invoices\Index.cshtml" />
+    <Content Include="Views\Invoices\Create.cshtml" />
+    <Content Include="Views\Invoices\Delete.cshtml" />
+    <Content Include="Views\Invoices\Details.cshtml" />
+    <Content Include="Views\Invoices\Edit.cshtml" />
+    <Content Include="Views\Invoices\Index.cshtml" />
     <Content Include="Views\Payments\Create.cshtml" />
     <Content Include="Views\Payments\Delete.cshtml" />
     <Content Include="Views\Payments\Details.cshtml" />
@@ -382,7 +382,7 @@
     <Content Include="Views\HazeltineCustomer\Index.cshtml" />
     <Content Include="Views\Customers\DetailsReadOnly.cshtml" />
     <Content Include="Views\Contracts\DetailsReadOnly.cshtml" />
-    <Content Include="Views\Manage\Invoices\DetailsReadOnly.cshtml" />
+    <Content Include="Views\Invoices\DetailsReadOnly.cshtml" />
     <Content Include="Views\Payments\DetailsReadOnly.cshtml" />
     <Content Include="Views\ContractBuilder\BuildContract.cshtml" />
     <Content Include="Views\Contracts\AddStorage.cshtml" />

@@ -168,6 +168,42 @@ namespace HazeltineStorage.Controllers
             return View(viewModel);
         }
 
+        // POST: Contracts/AddStorage/5 Add storage units to contract.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddStorage(ContractBuilderViewModel viewModel)
+        {
+            viewModel.SelectedStorageUnit = db.StorageUnits.Find(viewModel.SelectedStorageUnitId);
+            //assign storage unit to this contract.
+            viewModel.SelectedStorageUnit.ContractId = viewModel.Contract.Id;
+
+            Contract contract = db.Contracts.Find(viewModel.Contract.Id);
+            viewModel.Contract = contract;
+
+            viewModel.Contract.ContractTotal = 1000M;//hard coded to test.
+                //sum of all storage unit rates where storage unit is associated with this contract.
+                
+                //db.StorageUnits.Rate;
+
+            //Update contract total
+            //contract.Total = sum of all storage unit rates where storageunit.ContractId == Contract.Id 
+
+
+
+
+
+            // What do I need to do to make the model valid?
+            //if (ModelState.IsValid)
+            //{
+                //db.Entry(viewModel).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AddStorage", "Contracts", new { id = viewModel.Contract.Id });//go where?
+            //}
+            //Where to go if it fails to update?
+            //return RedirectToAction("AddStorage", "Contracts", new { id = viewModel.Contract.Id });
+                                                          // or View(viewModel);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

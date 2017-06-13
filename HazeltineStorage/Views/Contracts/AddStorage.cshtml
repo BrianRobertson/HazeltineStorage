@@ -4,32 +4,68 @@
 }
 
 
-<h2>Add Storage</h2>
+<h2>Add Storage To Contract</h2>
 
 
-    <p>  
-        @Model.Contract.Id
-    </p>
+<p>
+    @Model.Contract.Id
+</p>
 
 @Model.Contract.StartDate
-
+<br />
 @Model.Customer.FirstName
 @Model.Customer.LastName
+<br />
+@Model.Customer.Address1
 
 
-<ul>
-        @foreach (var storageUnit in Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id))
-        {
-            <li>@storageUnit.UnitNumber @storageUnit.UnitDescription @storageUnit.RentalRate</li>
-        }
-    </ul>
+<table class="table">
+    <tr>
+        <th>
+            Unit Number
+            @*@Html.DisplayNameFor(su => su.StorageUnit.UnitNumber)*@
+        </th>
+        <th>
+            Unit Description
+        </th>
+        <th>
+            Rate
+        </th>
+    </tr>
+                @foreach (var storageUnit in Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id))
+                {
+                    <tr>
+                        <td>
+                            @storageUnit.UnitNumber
+                        </td>
+                        <td>
+                            @storageUnit.UnitDescription
+                        </td>
+                        <td>
+                            @storageUnit.RentalRate
+                        </td>
+                    </tr>
+                }
+    <tr>
+        <td>
+            <p> The total contracted storage is: @Model.Contract.ContractTotal</p>
+        </td>
+    </tr>
+</table>
 
 
 
-@using (Html.BeginForm("AddStorage", "Contracts"))
-{
-    <div class="form-group">
-        @Html.LabelFor(su => su.StorageUnits)
-        @Html.DropDownListFor(su => su.StorageUnits, new SelectList(Model.StorageUnits, "Id", "UnitNumber"), "Select Storage Unit To Add", new { @class = "form-control" })
-    </div>
-}
+            @using (Html.BeginForm("AddStorage", "Contracts", FormMethod.Post))//removed from arguments: new { viewModel = Model}
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(su => su.StorageUnits)
+                    @Html.DropDownListFor(ssui => ssui.SelectedStorageUnitId, new SelectList(Model.StorageUnits, "Id", "UnitNumber"), "Select Storage Unit To Add", new { @class = "form-control" })
+                </div>
+
+                @Html.HiddenFor(m => m.Contract.Id)
+                @Html.HiddenFor(m => m.Customer.Id)
+
+                <button type="submit" class="btn-primary">Add Storage</button>
+            }
