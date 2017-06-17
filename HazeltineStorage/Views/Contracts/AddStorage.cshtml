@@ -47,12 +47,24 @@
                     </tr>
                 }
     <tr>
+        <th>
+            <p>Total Units Contracted</p>
+        </th>
+        <th></th>
+        <th>
+            <p>Total Contracted Rate</p>
+        </th>
+    </tr>
+    <tr>
         <td>
-            <p> The total contracted storage is: @Model.Contract.ContractTotal</p>
+            @Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id).Count()
+        </td>
+        <td></td>
+        <td>
+            @Model.Contract.ContractTotal
         </td>
     </tr>
 </table>
-
 
 
             @using (Html.BeginForm("AddStorage", "Contracts", FormMethod.Post))//removed from arguments: new { viewModel = Model}
@@ -69,3 +81,8 @@
 
                 <button type="submit" class="btn-primary">Add Storage</button>
             }
+
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
