@@ -41,7 +41,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Zip)
         </th>*@
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.MainPhone)
         </th>
         <th>
@@ -58,7 +58,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmailInvoice)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CustomerBalance)
         </th>
@@ -100,7 +100,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Zip)
         </td>*@
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.MainPhone)
         </td>
         <td>
@@ -117,7 +117,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EmailInvoice)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CustomerBalance)
         </td>
@@ -127,7 +127,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
+            @Html.ActionLink("Manage Customer", "Manage", new { id = item.Id })
         </td>
     </tr>
 }

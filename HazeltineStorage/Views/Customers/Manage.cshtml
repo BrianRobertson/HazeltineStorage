@@ -1,0 +1,101 @@
+﻿@model HazeltineStorage.Models.Customer
+
+@{
+    ViewBag.Title = "Manage Customer";
+}
+
+<h2>Manage</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    Full Name
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MainPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MainPhone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MobilePhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MobilePhone)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerType.TypeDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerType.TypeDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerStatus.StatusDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerStatus.StatusDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerBalance)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerBalance)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        <!-- Tab Buttons -->
+        <ul id="tabstrip" class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#_CustomerInfoTab" role="tab" data-toggle="tab">Customer Info</a></li>
+
+            <li><a href="#_ContractInfoTab" role="tab" data-toggle="tab">Contracts</a></li>
+
+            <li><a href="#_SubmissionTab" role="tab" data-toggle="tab">Same View As Active Tab</a></li>
+
+            <li><a href="#_SearchTab" role="tab" data-toggle="tab">Non Active Tab</a></li>
+        </ul>
+
+        <!-- Tab Content Containers -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="_CustomerInfoTab">@Html.Partial("_CustomerInfoTab")</div>
+
+            <div class="tab-pane fade" id="_ContractInfoTab">@Html.Partial("_ContractInfoTab")</div>
+
+            <div class="tab-pane fade" id="_SubmissionTab">@Html.Partial("_SubmissionTab")</div>
+
+            <div class="tab-pane fade" id="_SearchTab"></div>
+        </div>
+
+
+
+
+
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>

@@ -1,0 +1,65 @@
+﻿@*@model IEnumerable<HazeltineStorage.Models.Contract>*@
+@model HazeltineStorage.Models.Customer
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Contracts")
+</p>
+
+<p>
+    Contracts for:
+    @Html.DisplayFor(model => model.FirstName)
+    @Html.DisplayFor(model => model.LastName)
+</p>
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(c => c.Contracts.First().StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.Contracts.First().EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.Contracts.First().DayOfMonthDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.Contracts.First().DayOfMonthGracePeriodEnds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.Contracts.First().ContractTotal)
+        </th>
+        <th></th>
+    </tr>
+
+
+@foreach (var contract in Model.Contracts)
+    {
+        <tr>
+            <td>
+                @contract.StartDate
+            </td>
+            <td>
+                @contract.EndDate
+            </td>
+            <td>
+                @contract.DayOfMonthDue
+            </td>
+            <td>
+                @contract.DayOfMonthGracePeriodEnds
+            </td>
+            <td>
+                @contract.ContractTotal
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Contracts", new { id=contract.Id }, null) |
+                @Html.ActionLink("Details", "Details", "Contracts", new { id=contract.Id }, null) |
+                @Html.ActionLink("Delete", "Delete", "Contracts", new { id=contract.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -154,6 +154,40 @@ namespace HazeltineStorage.Controllers
             return View(customer);
         }
 
+        //Brian code below:
+        // GET: Customers/Manage/
+        public ActionResult Manage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
+            ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
+            return View(customer);
+        }
+
+        //Not used at the moment:
+        //public ActionResult _SubmissionTab()
+        //{
+        //    return PartialView();
+        //}
+
+        //public ActionResult _SearchTab()
+        //{
+        //    return PartialView();
+        //}
+
+
+
+        //Brian code above.
+
         // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
