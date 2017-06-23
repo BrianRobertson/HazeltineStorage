@@ -1,0 +1,65 @@
+﻿@*@model IEnumerable<HazeltineStorage.Models.Payment>*@
+@model HazeltineStorage.Models.Customer
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Payments")
+</p>
+
+<p>
+    Payments from: 
+    @Html.DisplayFor(model => model.FirstName)
+    @Html.DisplayFor(model => model.LastName)
+</p>
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Payments.First().Customer.UserId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Payments.First().ReceivedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payments.First().PaymentType.PaymentTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payments.First().AmountReceived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payments.First().Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payments.First().DepositDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Payments) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Customer.UserId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceivedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentType.PaymentTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountReceived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepositDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Payments", new { id=item.Id }, null) |
+            @Html.ActionLink("Details", "Details", "Payments", new { id=item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", "Payments", new { id=item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>

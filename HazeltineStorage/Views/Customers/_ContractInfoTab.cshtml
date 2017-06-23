@@ -18,19 +18,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(c => c.Contracts.First().StartDate)
+            @Html.DisplayNameFor(model => model.Contracts.First().StartDate)
         </th>
         <th>
-            @Html.DisplayNameFor(c => c.Contracts.First().EndDate)
+            @Html.DisplayNameFor(model => model.Contracts.First().EndDate)
         </th>
         <th>
-            @Html.DisplayNameFor(c => c.Contracts.First().DayOfMonthDue)
+            @Html.DisplayNameFor(model => model.Contracts.First().DayOfMonthDue)
         </th>
         <th>
-            @Html.DisplayNameFor(c => c.Contracts.First().DayOfMonthGracePeriodEnds)
+            @Html.DisplayNameFor(model => model.Contracts.First().DayOfMonthGracePeriodEnds)
         </th>
         <th>
-            @Html.DisplayNameFor(c => c.Contracts.First().ContractTotal)
+            @Html.DisplayNameFor(model => model.Contracts.First().ContractTotal)
         </th>
         <th></th>
     </tr>
@@ -40,24 +40,25 @@
     {
         <tr>
             <td>
-                @contract.StartDate
+                @Html.DisplayFor(modelItem => contract.StartDate)
             </td>
             <td>
-                @contract.EndDate
+                @Html.DisplayFor(modelItem => contract.EndDate)
             </td>
             <td>
-                @contract.DayOfMonthDue
+                @Html.DisplayFor(modelItem => contract.DayOfMonthDue)
             </td>
             <td>
-                @contract.DayOfMonthGracePeriodEnds
+                @Html.DisplayFor(modelItem => contract.DayOfMonthGracePeriodEnds)
             </td>
             <td>
-                @contract.ContractTotal
+                @Html.DisplayFor(modelItem => contract.ContractTotal)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", "Contracts", new { id=contract.Id }, null) |
                 @Html.ActionLink("Details", "Details", "Contracts", new { id=contract.Id }, null) |
-                @Html.ActionLink("Delete", "Delete", "Contracts", new { id=contract.Id }, null)
+                @Html.ActionLink("Delete", "Delete", "Contracts", new { id=contract.Id }, null) |
+                @Html.ActionLink("Add Storage Units", "AddStorage", "Contracts", new { id = contract.Id }, null)
             </td>
         </tr>
     }

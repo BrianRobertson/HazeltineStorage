@@ -10,8 +10,8 @@
 <p>
     @Model.Contract.Id
 </p>
-
-@Model.Contract.StartDate
+@* To correct formatting issues, Use this syntax: *@
+@Html.DisplayFor(model => model.Contract.StartDate)
 <br />
 @Model.Customer.FirstName
 @Model.Customer.LastName

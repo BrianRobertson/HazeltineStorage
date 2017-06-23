@@ -1,0 +1,60 @@
+﻿@*@model IEnumerable<HazeltineStorage.Models.ActivityLog>*@
+@model HazeltineStorage.Models.Customer
+
+<p>
+    @Html.ActionLink("Create New", "Create", "ActivityLogs")
+</p>
+
+<p>
+    Activity and Messages for:
+    @Html.DisplayFor(model => model.FirstName)
+    @Html.DisplayFor(model => model.LastName)
+</p>
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Activities.First().Customer.UserId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Activities.First().LogDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activities.First().MessageType.MessageType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activities.First().Notes)
+        </th>
+        <th>
+            Hazeltine Manager Login Id
+            @*@Html.DisplayNameFor(model => model.Activities.First().User.Email)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Activities) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Customer.UserId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.LogDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageType.MessageType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "ActivityLogs", new { id=item.Id }, null) |
+            @Html.ActionLink("Details", "Details", "ActivityLogs", new { id=item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", "ActivityLogs", new { id=item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>

@@ -12,7 +12,7 @@
 
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <dl class="dl-horizontal">
 
                 <dt>
@@ -38,7 +38,7 @@
             </dl>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.CustomerType.TypeDescription)
@@ -62,6 +62,10 @@
                 </dd>
             </dl>
         </div>
+
+         <div class="col-md-4">
+                        <p><a href="~/Payments/Index" class="btn btn-primary btn-lg">Make A Payment</a></p>
+         </div>
     </div>
 </div>
 
@@ -75,9 +79,11 @@
 
             <li><a href="#_ContractInfoTab" role="tab" data-toggle="tab">Contracts</a></li>
 
-            <li><a href="#_SubmissionTab" role="tab" data-toggle="tab">Same View As Active Tab</a></li>
+            <li><a href="#_InvoiceInfoTab" role="tab" data-toggle="tab">Invoices</a></li>
 
-            <li><a href="#_SearchTab" role="tab" data-toggle="tab">Non Active Tab</a></li>
+            <li><a href="#_PaymentInfoTab" role="tab" data-toggle="tab">Payments</a></li>
+
+            <li><a href="#_ActivityInfoTab" role="tab" data-toggle="tab">Activity and Messages</a></li>
         </ul>
 
         <!-- Tab Content Containers -->
@@ -86,9 +92,11 @@
 
             <div class="tab-pane fade" id="_ContractInfoTab">@Html.Partial("_ContractInfoTab")</div>
 
-            <div class="tab-pane fade" id="_SubmissionTab">@Html.Partial("_SubmissionTab")</div>
+            <div class="tab-pane fade" id="_InvoiceInfoTab">@Html.Partial("_InvoiceInfoTab")</div>
 
-            <div class="tab-pane fade" id="_SearchTab"></div>
+            <div class="tab-pane fade" id="_PaymentInfoTab">@Html.Partial("_PaymentInfoTab")</div>
+
+            <div class="tab-pane fade" id="_ActivityInfoTab">@Html.Partial("_ActivityInfoTab")</div>
         </div>
 
 

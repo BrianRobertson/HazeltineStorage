@@ -1,0 +1,59 @@
+﻿@*@model IEnumerable<HazeltineStorage.Models.Invoice>*@
+@model HazeltineStorage.Models.Customer
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Invoices")
+</p>
+
+<p>
+    Invoices for: 
+    @Html.DisplayFor(model => model.FirstName)
+    @Html.DisplayFor(model => model.LastName)
+</p>
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Customer.UserId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Invoices.First().InvoiceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoices.First().ForMonthOf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoices.First().IsPaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoices.First().TotalDue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Invoices) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Customer.UserId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForMonthOf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalDue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Invoices", new { id=item.Id }, null) |
+            @Html.ActionLink("Details", "Details", "Invoices", new { id=item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", "Invoices", new { id=item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>
