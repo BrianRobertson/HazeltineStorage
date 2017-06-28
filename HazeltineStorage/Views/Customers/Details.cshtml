@@ -11,9 +11,17 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @*Label for UserId but use Email in list.*@
+            @Html.DisplayNameFor(model => model.User.Id)
+        </dt>
+        <dd>
+            @*Email is the more user friendly identifier.*@
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CustomerStatus.StatusDescription)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CustomerStatus.StatusDescription)
         </dd>
@@ -21,25 +29,13 @@
         <dt>
             @Html.DisplayNameFor(model => model.CustomerType.TypeDescription)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CustomerType.TypeDescription)
         </dd>
 
         <dt>
-            @*Label for UserId but use Email in list.*@
-            @Html.DisplayNameFor(model => model.User.Id)
-        </dt>
-
-        <dd>
-            @*Email is the more user friendly identifier.*@
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.FirstName)
         </dd>
@@ -47,7 +43,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.LastName)
         </dd>
@@ -55,7 +50,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Address1)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Address1)
         </dd>
@@ -63,7 +57,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Address2)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Address2)
         </dd>
@@ -71,7 +64,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.City)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
@@ -79,7 +71,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.State)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.State)
         </dd>
@@ -87,7 +78,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Zip)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Zip)
         </dd>
@@ -95,7 +85,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.MainPhone)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.MainPhone)
         </dd>
@@ -103,7 +92,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.MobilePhone)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.MobilePhone)
         </dd>
@@ -111,7 +99,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.TextNotification)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.TextNotification)
         </dd>
@@ -119,7 +106,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.EmailAddress)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EmailAddress)
         </dd>
@@ -127,7 +113,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.EmailNotification)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EmailNotification)
         </dd>
@@ -135,7 +120,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.EmailInvoice)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EmailInvoice)
         </dd>
@@ -143,7 +127,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.CustomerBalance)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CustomerBalance)
         </dd>
@@ -151,7 +134,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.CustomerNote)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CustomerNote)
         </dd>

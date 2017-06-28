@@ -12,7 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.UserId)
+            @*@Html.DisplayNameFor(model => model.Customer.UserId)*@
+            @*@Html.DisplayNameFor(model => model.Customer.FirstName)
+            @Html.DisplayNameFor(model => model.Customer.LastName)*@
+            Invoice To
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InvoiceDate)
@@ -21,10 +24,10 @@
             @Html.DisplayNameFor(model => model.ForMonthOf)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsPaid)
+            @Html.DisplayNameFor(model => model.TotalDue)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TotalDue)
+            @Html.DisplayNameFor(model => model.IsPaid)
         </th>
         <th></th>
     </tr>
@@ -32,7 +35,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Customer.UserId)
+            @*@Html.DisplayFor(modelItem => item.Customer.UserId)*@
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            @Html.DisplayFor(modelItem => item.Customer.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InvoiceDate)
@@ -41,10 +46,10 @@
             @Html.DisplayFor(modelItem => item.ForMonthOf)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsPaid)
+            @Html.DisplayFor(modelItem => item.TotalDue)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TotalDue)
+            @Html.DisplayFor(modelItem => item.IsPaid)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -12,19 +12,26 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageType.MessageType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Email)
+            @*@Html.DisplayNameFor(model => model.Customer.UserId)
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+            @Html.DisplayNameFor(model => model.Customer.LastName)*@
+            Activity and Messages To
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LogDate)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.MessageType.MessageType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageType.MessageChannel)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.User.Email)*@
+            Hazeltine Manager Login Id
         </th>
         <th></th>
     </tr>
@@ -32,19 +39,24 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Customer.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageType.MessageType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Email)
+            @*@Html.DisplayFor(modelItem => item.Customer.UserId)*@
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            @Html.DisplayFor(modelItem => item.Customer.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LogDate)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.MessageType.MessageType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageType.MessageChannel)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
