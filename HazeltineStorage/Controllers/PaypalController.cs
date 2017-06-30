@@ -24,7 +24,7 @@ namespace HazeltineStorage.Controllers
             Item item = new Item();
             item.name = "Demo Item";
             item.currency = "USD";
-            item.price = "5";
+            item.price = "10";
             item.quantity = "1";
             item.sku = "sku";
 
@@ -37,36 +37,36 @@ namespace HazeltineStorage.Controllers
 
             //Address for the payment
             Address billingAddress = new Address();
-            billingAddress.city = "NewYork";
+            billingAddress.city = "Madison";
             billingAddress.country_code = "US";
-            billingAddress.line1 = "23rd street kew gardens";
-            billingAddress.postal_code = "43210";
-            billingAddress.state = "NY";
+            billingAddress.line1 = "3528 Atwood Ave. #201";
+            billingAddress.postal_code = "53714";
+            billingAddress.state = "WI";
 
 
             //Now Create an object of credit card and add above details to it
             //Please replace your credit card details over here which you got from paypal
             CreditCard crdtCard = new CreditCard();
             crdtCard.billing_address = billingAddress;
-            crdtCard.cvv2 = "874";  //card cvv2 number
-            crdtCard.expire_month = 06; //card expire date
+            crdtCard.cvv2 = "123";  //card cvv2 number
+            crdtCard.expire_month = 6; //card expire date
             crdtCard.expire_year = 2022; //card expire year
             crdtCard.first_name = "Brian";
             crdtCard.last_name = "Robertson";
             crdtCard.number = "4032036211144249"; //enter your credit card number here
-            crdtCard.type = "VISA"; //credit card type here paypal allows 4 types
+            crdtCard.type = "visa"; //credit card type here paypal allows 4 types
 
             // Specify details of your payment amount.
             Details details = new Details();
-            details.shipping = "1";
-            details.subtotal = "5";
-            details.tax = "1";
+            details.shipping = "0";
+            details.subtotal = "10";
+            details.tax = "0";
 
             // Specify your total payment amount and assign the details object
             Amount amnt = new Amount();
             amnt.currency = "USD";
             // Total = shipping tax + subtotal.
-            amnt.total = "7";
+            amnt.total = "10";
             amnt.details = details;
 
             // Now make a transaction object and assign the Amount object
@@ -74,7 +74,7 @@ namespace HazeltineStorage.Controllers
             tran.amount = amnt;
             tran.description = "Description about the payment amount.";
             tran.item_list = itemList;
-            tran.invoice_number = "your invoice number which you are generating2";
+            tran.invoice_number = "your invoice number which you are generating6";
 
             // Now, we have to make a list of transaction and add the transactions object
             // to this list. You can create one or more object as per your requirements
@@ -241,7 +241,7 @@ namespace HazeltineStorage.Controllers
             {
                 name = "Item Name",
                 currency = "USD",
-                price = "5",
+                price = "10",
                 quantity = "1",
                 sku = "sku"
             });
@@ -258,16 +258,16 @@ namespace HazeltineStorage.Controllers
             // similar as we did for credit card, do here and create details object
             var details = new Details()
             {
-                tax = "1",
-                shipping = "1",
-                subtotal = "5"
+                tax = "0",
+                shipping = "0",
+                subtotal = "10"
             };
 
             // similar as we did for credit card, do here and create amount object
             var amount = new Amount()
             {
                 currency = "USD",
-                total = "7", // Total must be equal to sum of shipping, tax and subtotal.
+                total = "10", // Total must be equal to sum of shipping, tax and subtotal.
                 details = details
             };
 
@@ -276,7 +276,7 @@ namespace HazeltineStorage.Controllers
             transactionList.Add(new Transaction()
             {
                 description = "Transaction description.",
-                invoice_number = "your invoice number2",
+                invoice_number = "your invoice number6",
                 amount = amount,
                 item_list = itemList
             });
