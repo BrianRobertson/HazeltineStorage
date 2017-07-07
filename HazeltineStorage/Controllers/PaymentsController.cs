@@ -57,7 +57,8 @@ namespace HazeltineStorage.Controllers
         // GET: Payments/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId");
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName");
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId");
             ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName");
             return View();
         }
@@ -76,7 +77,8 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", payment.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
             ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName", payment.PaymentTypeId);
             return View(payment);
         }
@@ -93,7 +95,8 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", payment.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
             ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName", payment.PaymentTypeId);
             return View(payment);
         }
@@ -111,7 +114,8 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", payment.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
             ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName", payment.PaymentTypeId);
             return View(payment);
         }

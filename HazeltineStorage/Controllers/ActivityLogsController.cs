@@ -39,7 +39,8 @@ namespace HazeltineStorage.Controllers
         // GET: ActivityLogs/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId");
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName");
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId");
             ViewBag.MessageId = new SelectList(db.Messages, "Id", "MessageType");
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
@@ -59,7 +60,8 @@ namespace HazeltineStorage.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", activityLog.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", activityLog.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", activityLog.CustomerId);
             ViewBag.MessageId = new SelectList(db.Messages, "Id", "MessageType", activityLog.MessageId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", activityLog.UserId);
             return View(activityLog);
@@ -77,7 +79,8 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", activityLog.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", activityLog.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", activityLog.CustomerId);
             ViewBag.MessageId = new SelectList(db.Messages, "Id", "MessageType", activityLog.MessageId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", activityLog.UserId);
             return View(activityLog);
@@ -96,7 +99,8 @@ namespace HazeltineStorage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", activityLog.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", activityLog.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", activityLog.CustomerId);
             ViewBag.MessageId = new SelectList(db.Messages, "Id", "MessageType", activityLog.MessageId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", activityLog.UserId);
             return View(activityLog);

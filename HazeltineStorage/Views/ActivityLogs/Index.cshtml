@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
+            Activity Or Message To
             @*@Html.DisplayNameFor(model => model.Customer.UserId)
             @Html.DisplayNameFor(model => model.Customer.FirstName)
             @Html.DisplayNameFor(model => model.Customer.LastName)*@
-            Activity and Messages To
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LogDate)
@@ -30,8 +30,8 @@
             @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th>
+            Logged By
             @*@Html.DisplayNameFor(model => model.User.Email)*@
-            Hazeltine Manager Login Id
         </th>
         <th></th>
     </tr>
@@ -39,9 +39,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @*@Html.DisplayFor(modelItem => item.Customer.UserId)*@
             @Html.DisplayFor(modelItem => item.Customer.FirstName)
             @Html.DisplayFor(modelItem => item.Customer.LastName)
+            @*@Html.DisplayFor(modelItem => item.Customer.UserId)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LogDate)
