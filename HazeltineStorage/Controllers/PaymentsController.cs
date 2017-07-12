@@ -83,6 +83,47 @@ namespace HazeltineStorage.Controllers
             return View(payment);
         }
 
+
+
+        // GET: Payments/Create For This Customer
+        public ActionResult CreateForThisCustomer(int thisCustomerId)
+        {
+            Customer thisCustomer = db.Customers.Find(thisCustomerId);
+            Payment payment = new Payment();
+            payment.CustomerId = thisCustomerId;
+            payment.ReceivedDate = DateTime.Now;
+            payment.AmountReceived = thisCustomer.CustomerBalance.GetValueOrDefault();
+
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName");
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId");
+            ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName");
+            return View(payment);
+        }
+
+
+
+        // GET: Payments/Confirm Online Payment
+        public ActionResult ConfirmOnlinePayment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            //ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
+            //ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
+
+            //ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName");
+            return View(customer);
+        }
+
+
+
         // GET: Payments/Edit/5
         public ActionResult Edit(int? id)
         {

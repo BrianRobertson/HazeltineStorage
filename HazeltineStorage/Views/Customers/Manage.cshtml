@@ -64,6 +64,8 @@
         </div>
 
          <div class="col-md-4">
+             @Html.ActionLink("Make A Payment", "ConfirmOnlinePayment", "Payments", new { id = Model.Id }, null);
+             @*ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes);*@
                         <p><a href="~/Paypal/Index" class="btn btn-primary btn-lg">Make A Payment</a></p>
          </div>
     </div>

@@ -2,7 +2,9 @@
 @model HazeltineStorage.Models.Customer
 
 <p>
-    @Html.ActionLink("Create New", "Create", "Payments")
+    @Html.ActionLink("Create New For This Customer", "CreateForThisCustomer", "Payments", new { thisCustomerId = Model.Id } , null)
+    @*@Html.ActionLink("Create New For This Customer", "Create", "Payments", new { id = item.Id }, null)*@
+    @*@Html.ActionLink("Create New", "Create", "Payments")*@
 </p>
 
 <p>

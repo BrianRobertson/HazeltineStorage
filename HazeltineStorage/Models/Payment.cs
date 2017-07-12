@@ -33,6 +33,6 @@ namespace HazeltineStorage.Models
         [Display(Name = "Deposit Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DepositDate { get; set; }
+        public DateTime? DepositDate { get; set; }
     }
 }
