@@ -19,15 +19,14 @@
             @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @* I should consider using a view model for this. 
-                    I am getting the following error when trying to save the newly created payment for this customer: *@
+                @* I could consider using a view model for this. It will save if I display CustomerId in Editor.
+                   I am getting the following error when trying to save the newly created payment for this customer: *@
                 @* {"The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_dbo.Payments_dbo.Customers_CustomerId\". The conflict occurred in database \"aspnet-HazeltineStorage-20170522082208\", table \"dbo.Customers\", column 'Id'.\r\nThe statement has been terminated."} *@
 
                 @*@Html.DisplayFor(model => model.Customer.FirstName)
                 @Html.DisplayFor(model => model.Customer.LastName)*@
 
-                @Html.DisplayFor(model => model.CustomerId)
-
+                @Html.EditorFor(model => model.CustomerId, new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.DropDownList("CustomerId", null, htmlAttributes: new { @class = "form-control" })*@
                 @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
             </div>

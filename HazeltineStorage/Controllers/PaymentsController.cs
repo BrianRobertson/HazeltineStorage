@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HazeltineStorage.Models;
+using HazeltineStorage.ViewModels;
 
 namespace HazeltineStorage.Controllers
 {
@@ -114,12 +115,24 @@ namespace HazeltineStorage.Controllers
             {
                 return HttpNotFound();
             }
+
+            Payment payment = new Payment();
+            payment.CustomerId = customer.Id;
+            payment.ReceivedDate = DateTime.Now;
+            payment.AmountReceived = customer.CustomerBalance.GetValueOrDefault();
+
+            //Build view model with customer and payment
+            var viewModel = new CustomerPaymentViewModel
+            {
+                Customer = customer,
+                Payment = payment
+            };
+
             //ViewBag.CustomerStatusId = new SelectList(db.CustomerStatus, "Id", "StatusDescription", customer.CustomerStatusId);
             //ViewBag.CustomerTypeId = new SelectList(db.CustomerTypes, "Id", "TypeDescription", customer.CustomerTypeId);
             //ViewBag.UserId = new SelectList(db.Users, "Id", "Email", customer.UserId);
-
             //ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName");
-            return View(customer);
+            return View(viewModel);
         }
 
 

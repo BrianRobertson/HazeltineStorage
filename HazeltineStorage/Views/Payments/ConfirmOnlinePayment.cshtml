@@ -1,4 +1,4 @@
-﻿@model HazeltineStorage.Models.Payment
+﻿@model HazeltineStorage.ViewModels.CustomerPaymentViewModel
 @*@model HazeltineStorage.Models.Customer*@
 
 @{
@@ -7,9 +7,10 @@
 
 <h2>Confirm Online Payment</h2>
 
-<p> Your account balance due is:</p>
-@*@customer.CustomerBalance*@
-@*@Html.DisplayFor(model => model.CustomerBalance)*@
+<p>Hello @Model.Customer.FirstName @Model.Customer.LastName</p>
+
+<p> Your account balance due is: $ </p> @Model.Customer.CustomerBalance;
+@Html.DisplayFor(model => model.Customer.CustomerBalance)
 
 @using (Html.BeginForm()) 
 {
@@ -28,13 +29,13 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ReceivedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Payment.ReceivedDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @* Try this: *@
-                @Html.DisplayFor(model => model.ReceivedDate)
+                @Html.DisplayFor(model => model.Payment.ReceivedDate)
 
-                @Html.EditorFor(model => model.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReceivedDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Payment.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Payment.ReceivedDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -47,18 +48,18 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountReceived, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Payment.AmountReceived, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountReceived, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountReceived, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Payment.AmountReceived, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Payment.AmountReceived, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Payment.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Payment.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Payment.Notes, "", new { @class = "text-danger" })
             </div>
         </div>
 
