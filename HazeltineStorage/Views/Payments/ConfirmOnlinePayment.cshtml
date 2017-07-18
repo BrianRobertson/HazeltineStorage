@@ -1,5 +1,4 @@
 ﻿@model HazeltineStorage.ViewModels.CustomerPaymentViewModel
-@*@model HazeltineStorage.Models.Customer*@
 
 @{
     ViewBag.Title = "ConfirmOnlinePayment";
@@ -7,20 +6,25 @@
 
 <h2>Confirm Online Payment</h2>
 
-<p>Hello @Model.Customer.FirstName @Model.Customer.LastName</p>
+<p>Hello @Model.Customer.FirstName @Model.Customer.LastName,</p>
 
-<p> Your account balance due is: $ </p> @Model.Customer.CustomerBalance;
-@Html.DisplayFor(model => model.Customer.CustomerBalance)
+<p>Your account balance due is: $@Html.DisplayFor(model => model.Customer.CustomerBalance)</p>
 
-@using (Html.BeginForm()) 
+<p>Make any desired changes to this online payment on the form below.</p>
+
+@using (Html.BeginForm("Create", "Payments")) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>Payment</h4>
         <hr />
-        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @* Try this: *@
+        @Html.HiddenFor(model => model.Payment.CustomerId)
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CustomerId", null, htmlAttributes: new { @class = "form-control" })
@@ -28,22 +32,29 @@
             </div>
         </div>*@
 
+        @Html.HiddenFor(model => model.Payment.ReceivedDate)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Payment.ReceivedDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @* Try this: *@
-                @Html.DisplayFor(model => model.Payment.ReceivedDate)
-
-                @Html.EditorFor(model => model.Payment.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DisplayFor(model => model.Payment.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })
+                @* And this: *@
+                @*@Html.EditorFor(model => model.Payment.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Payment.ReceivedDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        @* Try this: *@
+        @Html.HiddenFor(model => model.Payment.PaymentTypeId)
+
         @*<div class="form-group">
-            @Html.LabelFor(model => model.PaymentTypeId, "PaymentTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Payment.PaymentTypeId, "PaymentTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                Changed the following line:
+                @Html.DisplayFor(model => model.Payment.PaymentTypeId)
                 @Html.DropDownList("PaymentTypeId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Payment.PaymentTypeId, "", new { @class = "text-danger" })
             </div>
         </div>*@
 

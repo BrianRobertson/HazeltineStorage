@@ -119,7 +119,10 @@ namespace HazeltineStorage.Controllers
             Payment payment = new Payment();
             payment.CustomerId = customer.Id;
             payment.ReceivedDate = DateTime.Now;
+            payment.PaymentTypeId = 2;//Payment via Website.
             payment.AmountReceived = customer.CustomerBalance.GetValueOrDefault();
+            payment.Notes = "Make any notes about this payment here.";
+            //payment.DepositDate = payment.DepositDate.GetValueOrDefault();
 
             //Build view model with customer and payment
             var viewModel = new CustomerPaymentViewModel
