@@ -1,7 +1,7 @@
 ﻿@model HazeltineStorage.ViewModels.CustomerPaymentViewModel
 
 @{
-    ViewBag.Title = "ConfirmOnlinePayment";
+    ViewBag.Title = "Confirm Online Payment";
 }
 
 <h2>Confirm Online Payment</h2>
@@ -10,7 +10,7 @@
 
 <p>Your account balance due is: $@Html.DisplayFor(model => model.Customer.CustomerBalance)</p>
 
-<p>Make any desired changes to this online payment on the form below.</p>
+<p>Make any desired changes to this online payment on the form below and click NEXT.</p>
 
 @using (Html.BeginForm("Create", "Payments")) 
 {
@@ -32,6 +32,7 @@
             </div>
         </div>*@
 
+        @* Having the field both hidden and displaying seems to allow it to work: *@
         @Html.HiddenFor(model => model.Payment.ReceivedDate)
 
         <div class="form-group">
@@ -39,9 +40,9 @@
             <div class="col-md-10">
                 @* Try this: *@
                 @Html.DisplayFor(model => model.Payment.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @* And this: *@
+                @* or this: *@
                 @*@Html.EditorFor(model => model.Payment.ReceivedDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.ValidationMessageFor(model => model.Payment.ReceivedDate, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.Payment.ReceivedDate, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -84,7 +85,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Next" class="btn btn-default" />
             </div>
         </div>
     </div>
