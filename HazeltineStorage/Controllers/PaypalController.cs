@@ -141,7 +141,7 @@ namespace HazeltineStorage.Controllers
 
 
 
-        public ActionResult PaymentWithPaypal()
+        public ActionResult PaymentWithPaypal(Models.Payment confirmedOnlinePayment)
         {
             //getting the apiContext as earlier
             APIContext apiContext = Configuration.GetAPIContext();

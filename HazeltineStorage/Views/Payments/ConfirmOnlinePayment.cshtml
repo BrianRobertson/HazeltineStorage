@@ -12,10 +12,13 @@
 
 <p>Make any desired changes to this online payment on the form below and click NEXT.</p>
 
-@using (Html.BeginForm("Create", "Payments")) 
+@* ConfirmOnlinePayment POST: *@
+@*@using (Html.BeginForm("ConfirmOnlinePayment", "Payments"))*@
+@using (Html.BeginForm("Create", "Payments"))
+
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Payment</h4>
         <hr />

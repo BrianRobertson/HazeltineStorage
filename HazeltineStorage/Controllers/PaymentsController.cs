@@ -139,6 +139,32 @@ namespace HazeltineStorage.Controllers
         }
 
 
+        //Brian added:
+        // POST: Payments/ConfirmOnlinePayment
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmOnlinePayment([Bind(Include = "Id,CustomerId,ReceivedDate,PaymentTypeId,AmountReceived,Notes,DepositDate")] Payment payment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Payments.Add(payment);
+                db.SaveChanges();
+
+                //add the magic here:
+                Payment confirmedOnlinePayment = payment;
+
+
+                return RedirectToAction("PaymentWithPaypal", "Paypal", confirmedOnlinePayment);
+
+                //return RedirectToAction("Index");
+            }
+
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", payment.CustomerId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "UserId", payment.CustomerId);
+            ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName", payment.PaymentTypeId);
+            return View(payment);
+        }
+
 
         // GET: Payments/Edit/5
         public ActionResult Edit(int? id)
