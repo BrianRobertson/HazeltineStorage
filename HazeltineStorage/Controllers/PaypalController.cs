@@ -140,7 +140,7 @@ namespace HazeltineStorage.Controllers
         }
 
 
-
+        //Passing in the newly created Hazeltine Storage Payment object:
         public ActionResult PaymentWithPaypal(Models.Payment confirmedOnlinePayment)
         {
             //getting the apiContext as earlier
@@ -169,7 +169,7 @@ namespace HazeltineStorage.Controllers
                     //CreatePayment function gives us the payment approval url
                     //on which payer is redirected for paypal account payment
 
-                    var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + guid);
+                    var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + guid, confirmedOnlinePayment);
 
                     //get links returned from paypal in response to Create function call
 
@@ -207,6 +207,10 @@ namespace HazeltineStorage.Controllers
 
                     if (executedPayment.state.ToLower() != "approved")
                     {
+                        confirmedOnlinePayment.Notes = "Attempted payment of: $" + confirmedOnlinePayment.AmountReceived.ToString() + " was not approved by Paypal.";
+                        confirmedOnlinePayment.AmountReceived = 0;
+                        // Need to save this modified (confirmedOnlinePayment) to db upon failure.
+
                         return View("FailureView");
                     }
                 }
@@ -231,19 +235,23 @@ namespace HazeltineStorage.Controllers
         }
 
 
-        private PayPal.Api.Payment CreatePayment(APIContext apiContext, string redirectUrl)
+        private PayPal.Api.Payment CreatePayment(APIContext apiContext, string redirectUrl, Models.Payment confirmedOnlinePayment)
         {
+            //Brian converting amount received to string to assign to price, same idea for invoice number.
+            string amountReceived = confirmedOnlinePayment.AmountReceived.ToString();
+            string invoiceNumber = confirmedOnlinePayment.ReceivedDate.ToString() + "CustomerId=" + confirmedOnlinePayment.CustomerId.ToString() + "PaymentId=" + confirmedOnlinePayment.Id.ToString();
+        
 
             //similar to credit card create itemlist and add item objects to it
             var itemList = new ItemList() { items = new List<Item>() };
 
             itemList.items.Add(new Item()
             {
-                name = "Item Name",
+                name = "Payment to Hazeltine Storage",
                 currency = "USD",
-                price = "10",
+                price = amountReceived,
                 quantity = "1",
-                sku = "sku"
+                sku = "Payment to Hazeltine Storage"
             });
 
             var payer = new Payer() { payment_method = "paypal" };
@@ -260,14 +268,14 @@ namespace HazeltineStorage.Controllers
             {
                 tax = "0",
                 shipping = "0",
-                subtotal = "10"
+                subtotal = amountReceived
             };
 
             // similar as we did for credit card, do here and create amount object
             var amount = new Amount()
             {
                 currency = "USD",
-                total = "10", // Total must be equal to sum of shipping, tax and subtotal.
+                total = amountReceived, // Total must be equal to sum of shipping, tax and subtotal.
                 details = details
             };
 
@@ -275,8 +283,8 @@ namespace HazeltineStorage.Controllers
 
             transactionList.Add(new Transaction()
             {
-                description = "Transaction description.",
-                invoice_number = "your invoice number6",
+                description = confirmedOnlinePayment.Notes,
+                invoice_number = invoiceNumber,
                 amount = amount,
                 item_list = itemList
             });
