@@ -165,6 +165,18 @@ namespace HazeltineStorage.Controllers
             return View(payment);
         }
 
+        // POST: Payments/UpdateFailedPayment, for when Paypal doesn't approve transaction.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public void UpdateFailedPayment([Bind(Include = "Id,CustomerId,ReceivedDate,PaymentTypeId,AmountReceived,Notes,DepositDate")]Payment revisedOnlinePaymentRecord)
+        {
+            //if (ModelState.IsValid)
+            //{
+                db.Entry(revisedOnlinePaymentRecord).State = EntityState.Modified;
+                db.SaveChanges();
+                //return RedirectToAction("Index");
+            //}
+        }
 
         // GET: Payments/Edit/5
         public ActionResult Edit(int? id)

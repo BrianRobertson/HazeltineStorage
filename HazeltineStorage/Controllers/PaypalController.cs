@@ -209,7 +209,9 @@ namespace HazeltineStorage.Controllers
                     {
                         confirmedOnlinePayment.Notes = "Attempted payment of: $" + confirmedOnlinePayment.AmountReceived.ToString() + " was not approved by Paypal.";
                         confirmedOnlinePayment.AmountReceived = 0;
-                        // Need to save this modified (confirmedOnlinePayment) to db upon failure.
+                        //Need to save this modified (confirmedOnlinePayment) payment object to db upon Paypal failure. 
+                        //The following line doesn't work:
+                        //Models.Payment.UpdateFailedPayment(confirmedOnlinePayment);
 
                         return View("FailureView");
                     }
@@ -247,7 +249,7 @@ namespace HazeltineStorage.Controllers
 
             itemList.items.Add(new Item()
             {
-                name = "Payment to Hazeltine Storage",
+                name = "Hazeltine Storage Payment",
                 currency = "USD",
                 price = amountReceived,
                 quantity = "1",
