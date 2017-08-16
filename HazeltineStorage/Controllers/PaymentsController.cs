@@ -150,6 +150,10 @@ namespace HazeltineStorage.Controllers
                 db.Payments.Add(payment);
                 db.SaveChanges();
 
+                //How to I call a method in a different controller?
+                //Such as this:
+                //db.Customers.UpdateCustomerBalance(payment.CustomerId);
+
                 //add the magic here:
                 Payment confirmedOnlinePayment = payment;
 

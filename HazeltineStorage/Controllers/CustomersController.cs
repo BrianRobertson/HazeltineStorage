@@ -173,6 +173,31 @@ namespace HazeltineStorage.Controllers
             return View(customer);
         }
 
+        // POST: Customers/UpdateCustomerBalance/Id
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult UpdateCustomerBalance([Bind(Include = "CustomerBalance")] int id)
+        {
+            Customer customer = db.Customers.Find(id);
+            //The following two lines of code will fail if the customer has null of either invoices or payments.
+            decimal? customerInvoicesTotal = db.Invoices.Where(i => i.CustomerId == customer.Id).Sum(i => i.TotalDue);
+            decimal? customerPaymentsTotal = db.Payments.Where(p => p.CustomerId == customer.Id).Sum(p => p.AmountReceived);
+            //example of similair code: viewModel.Contract.ContractTotal = db.StorageUnits.Where(su => su.ContractId == viewModel.Contract.Id).Sum(su => su.RentalRate);
+
+            decimal? customerNetTotal = (customerInvoicesTotal - customerPaymentsTotal);
+
+            customer.CustomerBalance = customerNetTotal;
+            db.Entry(customer).State = EntityState.Modified;
+            db.SaveChanges();
+
+            //I am not sure why the following line works. "Manage" should accept an int not an object.
+            return View("Manage", customer);
+        }
+
+
+
+
+
         //Not used at the moment:
         //public ActionResult _SubmissionTab()
         //{
