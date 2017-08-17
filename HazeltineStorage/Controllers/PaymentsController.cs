@@ -75,6 +75,10 @@ namespace HazeltineStorage.Controllers
             {
                 db.Payments.Add(payment);
                 db.SaveChanges();
+
+                //UpdateCustomerBalance helper method:
+                UpdateCustomerBalance(payment.CustomerId);
+
                 return RedirectToAction("Index");
             }
 
@@ -83,8 +87,6 @@ namespace HazeltineStorage.Controllers
             ViewBag.PaymentTypeId = new SelectList(db.PaymentTypes, "Id", "PaymentTypeName", payment.PaymentTypeId);
             return View(payment);
         }
-
-
 
         // GET: Payments/Create For This Customer
         public ActionResult CreateForThisCustomer(int thisCustomerId)
@@ -150,13 +152,11 @@ namespace HazeltineStorage.Controllers
                 db.Payments.Add(payment);
                 db.SaveChanges();
 
-                //How to I call a method in a different controller?
-                //Such as this:
-                //db.Customers.UpdateCustomerBalance(payment.CustomerId);
+                //UpdateCustomerBalance helper method:
+                UpdateCustomerBalance(payment.CustomerId);
 
-                //add the magic here:
+                //Newly created payment is the starting point for creating a Paypal object:
                 Payment confirmedOnlinePayment = payment;
-
 
                 return RedirectToAction("PaymentWithPaypal", "Paypal", confirmedOnlinePayment);
 
@@ -178,7 +178,11 @@ namespace HazeltineStorage.Controllers
             //{
                 db.Entry(revisedOnlinePaymentRecord).State = EntityState.Modified;
                 db.SaveChanges();
-                //return RedirectToAction("Index");
+
+            //UpdateCustomerBalance helper method:
+            UpdateCustomerBalance(revisedOnlinePaymentRecord.CustomerId);
+
+            //return RedirectToAction("Index");
             //}
         }
 
@@ -211,6 +215,10 @@ namespace HazeltineStorage.Controllers
             {
                 db.Entry(payment).State = EntityState.Modified;
                 db.SaveChanges();
+
+                //UpdateCustomerBalance helper method:
+                UpdateCustomerBalance(payment.CustomerId);
+
                 return RedirectToAction("Index");
             }
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", payment.CustomerId);
@@ -242,7 +250,26 @@ namespace HazeltineStorage.Controllers
             Payment payment = db.Payments.Find(id);
             db.Payments.Remove(payment);
             db.SaveChanges();
+
+            //UpdateCustomerBalance helper method:
+            UpdateCustomerBalance(payment.CustomerId);
+
             return RedirectToAction("Index");
+        }
+
+        //POST: Payments/UpdateCustomerCustomerBalance/Id helper method
+        public void UpdateCustomerBalance([Bind(Include = "CustomerBalance")] int id)
+        {
+            Customer customer = db.Customers.Find(id);
+            //The following two lines of code will fail if the customer has null of either invoices or payments.
+            decimal? customerInvoicesTotal = db.Invoices.Where(i => i.CustomerId == customer.Id).Sum(i => i.TotalDue);
+            decimal? customerPaymentsTotal = db.Payments.Where(p => p.CustomerId == customer.Id).Sum(p => p.AmountReceived);
+
+            decimal? customerNetTotal = (customerInvoicesTotal - customerPaymentsTotal);
+
+            customer.CustomerBalance = customerNetTotal;
+            db.Entry(customer).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         protected override void Dispose(bool disposing)

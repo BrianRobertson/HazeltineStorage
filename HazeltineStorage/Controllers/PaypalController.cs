@@ -212,6 +212,7 @@ namespace HazeltineStorage.Controllers
                         //Need to save this modified (confirmedOnlinePayment) payment object to db upon Paypal failure. 
                         //The following line doesn't work:
                         //Models.Payment.UpdateFailedPayment(confirmedOnlinePayment);
+                        //How to call a method in a different class?
 
                         return View("FailureView");
                     }
@@ -222,8 +223,8 @@ namespace HazeltineStorage.Controllers
                 //Logger.log("Error" + ex.Message);
                 return View("FailureView");
             }
-
-            return View("SuccessView");
+            var successfulOnlinePayment = confirmedOnlinePayment;
+            return View("SuccessView", successfulOnlinePayment);
         }
 
 

@@ -70,6 +70,10 @@ namespace HazeltineStorage.Controllers
             {
                 db.Invoices.Add(invoice);
                 db.SaveChanges();
+
+                //UpdateCustomerBalance helper method:
+                UpdateCustomerBalance(invoice.CustomerId);
+
                 return RedirectToAction("Index");
             }
 
@@ -104,6 +108,10 @@ namespace HazeltineStorage.Controllers
             {
                 db.Entry(invoice).State = EntityState.Modified;
                 db.SaveChanges();
+
+                //UpdateCustomerBalance helper method:
+                UpdateCustomerBalance(invoice.CustomerId);
+
                 return RedirectToAction("Index");
             }
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "LastName", invoice.CustomerId);
@@ -133,7 +141,26 @@ namespace HazeltineStorage.Controllers
             Invoice invoice = db.Invoices.Find(id);
             db.Invoices.Remove(invoice);
             db.SaveChanges();
+
+            //UpdateCustomerBalance helper method:
+            UpdateCustomerBalance(invoice.CustomerId);
+
             return RedirectToAction("Index");
+        }
+
+        //POST: Invoices/UpdateCustomerCustomerBalance/Id helper method
+        public void UpdateCustomerBalance([Bind(Include = "CustomerBalance")] int id)
+        {
+            Customer customer = db.Customers.Find(id);
+            //The following two lines of code will fail if the customer has null of either invoices or payments.
+            decimal? customerInvoicesTotal = db.Invoices.Where(i => i.CustomerId == customer.Id).Sum(i => i.TotalDue);
+            decimal? customerPaymentsTotal = db.Payments.Where(p => p.CustomerId == customer.Id).Sum(p => p.AmountReceived);
+
+            decimal? customerNetTotal = (customerInvoicesTotal - customerPaymentsTotal);
+
+            customer.CustomerBalance = customerNetTotal;
+            db.Entry(customer).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         protected override void Dispose(bool disposing)

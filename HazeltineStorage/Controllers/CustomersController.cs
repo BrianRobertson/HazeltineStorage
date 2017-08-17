@@ -174,6 +174,7 @@ namespace HazeltineStorage.Controllers
         }
 
         // POST: Customers/UpdateCustomerBalance/Id
+        //Not sure why the following two lines need to be out in order for this method to work:
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult UpdateCustomerBalance([Bind(Include = "CustomerBalance")] int id)

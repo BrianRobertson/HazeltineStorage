@@ -1,7 +1,11 @@
-﻿
+﻿@model HazeltineStorage.Models.Payment
+
 @{
     ViewBag.Title = "Success View";
 }
 
-<h2>Success View - Thank you for your payment!</h2>
+<h2>Success View - Thank you for your payment of</h2>
 
+@Html.DisplayFor(model => model.AmountReceived)
+
+@Html.ActionLink("Return to Your Account", "UpdateCustomerBalance", "Customers", new { id = Model.CustomerId }, null)
