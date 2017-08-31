@@ -143,6 +143,9 @@ namespace HazeltineStorage.Controllers
         //Passing in the newly created Hazeltine Storage Payment object:
         public ActionResult PaymentWithPaypal(Models.Payment confirmedOnlinePayment)
         {
+            //Try this:
+            int confirmedOnlinePaymentId = confirmedOnlinePayment.Id;
+
             //getting the apiContext as earlier
             APIContext apiContext = Configuration.GetAPIContext();
 
@@ -177,6 +180,11 @@ namespace HazeltineStorage.Controllers
 
                     string paypalRedirectUrl = null;
 
+
+                    //Ok so far:
+                    var testOK1 = confirmedOnlinePayment;
+
+
                     while (links.MoveNext())
                     {
                         Links lnk = links.Current;
@@ -191,6 +199,11 @@ namespace HazeltineStorage.Controllers
                     // saving the paymentID in the key guid
                     Session.Add(guid, createdPayment.id);
 
+
+                    //Ok below?:
+                    var testOK3 = confirmedOnlinePayment;
+
+
                     return Redirect(paypalRedirectUrl);
                 }
                 else
@@ -204,6 +217,9 @@ namespace HazeltineStorage.Controllers
                     var guid = Request.Params["guid"];
 
                     var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
+
+                    //Not Ok here:
+                    var testOK2 = confirmedOnlinePayment;
 
                     if (executedPayment.state.ToLower() != "approved")
                     {
@@ -223,8 +239,12 @@ namespace HazeltineStorage.Controllers
                 //Logger.log("Error" + ex.Message);
                 return View("FailureView");
             }
-            var successfulOnlinePayment = confirmedOnlinePayment;
-            return View("SuccessView", successfulOnlinePayment);
+            var successfulOnlinePaymentId = confirmedOnlinePaymentId;
+
+            //try this:
+            return RedirectToAction("ReportSuccessfulOnlinePayment", "Payments", successfulOnlinePaymentId);
+            //instead of:
+            //return View("SuccessView", successfulOnlinePayment);
         }
 
 

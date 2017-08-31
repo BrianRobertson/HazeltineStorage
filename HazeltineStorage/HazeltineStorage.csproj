@@ -414,6 +414,7 @@
     <Content Include="Views\Paypal\SuccessView.cshtml" />
     <Content Include="Views\Payments\ConfirmOnlinePayment.cshtml" />
     <Content Include="Views\Payments\CreateForThisCustomer.cshtml" />
+    <Content Include="Views\Payments\ReportSuccessfulOnlinePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

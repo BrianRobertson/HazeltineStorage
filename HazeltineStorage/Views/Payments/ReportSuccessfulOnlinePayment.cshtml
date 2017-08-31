@@ -1,16 +1,20 @@
 ﻿@model HazeltineStorage.Models.Payment
 
 @{
-    ViewBag.Title = "Success View";
+    ViewBag.Title = "Report Successful Online Payment";
 }
 
+<h2>Report Successful Online Payment</h2>
+
+
+
 <h2>
-    Success View - Thank you for your payment of
+    Thank you for your payment of
 
     @Html.DisplayFor(model => model.AmountReceived)
 </h2>
 <p>
-@Model.AmountReceived
+    @Model.AmountReceived
 </p>
 
 <br />

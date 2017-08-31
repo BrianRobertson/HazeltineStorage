@@ -169,6 +169,14 @@ namespace HazeltineStorage.Controllers
             return View(payment);
         }
 
+        // GET: Payments/ReportOnlinePaymentSuccess/Payment Object
+        public ActionResult ReportSuccessfulOnlinePayment(int successfulOnlinePaymentId)
+        {
+            Payment successfulOnlinePayment = db.Payments.Find(successfulOnlinePaymentId);
+            return View(successfulOnlinePayment);
+        }
+
+
         // POST: Payments/UpdateFailedPayment, for when Paypal doesn't approve transaction.
         [HttpPost]
         [ValidateAntiForgeryToken]
