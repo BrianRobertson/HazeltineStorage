@@ -143,8 +143,6 @@ namespace HazeltineStorage.Controllers
         //Passing in the newly created Hazeltine Storage Payment object:
         public ActionResult PaymentWithPaypal(Models.Payment confirmedOnlinePayment)
         {
-            //Try this:
-            int confirmedOnlinePaymentId = confirmedOnlinePayment.Id;
 
             //getting the apiContext as earlier
             APIContext apiContext = Configuration.GetAPIContext();
@@ -181,7 +179,7 @@ namespace HazeltineStorage.Controllers
                     string paypalRedirectUrl = null;
 
 
-                    //Ok so far:
+                    //Ok here:
                     var testOK1 = confirmedOnlinePayment;
 
 
@@ -200,14 +198,18 @@ namespace HazeltineStorage.Controllers
                     Session.Add(guid, createdPayment.id);
 
 
-                    //Ok below?:
-                    var testOK3 = confirmedOnlinePayment;
+                    //Ok here:
+                    var testOK2 = confirmedOnlinePayment;
 
 
                     return Redirect(paypalRedirectUrl);
                 }
                 else
                 {
+                    //Not OK here, it gets wiped to null:
+                    var testOK3 = confirmedOnlinePayment;
+
+
                     // This section is executed when we have received all the payments parameters
 
                     // from the previous call to the function Create
@@ -219,18 +221,18 @@ namespace HazeltineStorage.Controllers
                     var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
 
                     //Not Ok here:
-                    var testOK2 = confirmedOnlinePayment;
+                    var testOK4 = confirmedOnlinePayment;
 
                     if (executedPayment.state.ToLower() != "approved")
                     {
-                        confirmedOnlinePayment.Notes = "Attempted payment of: $" + confirmedOnlinePayment.AmountReceived.ToString() + " was not approved by Paypal.";
-                        confirmedOnlinePayment.AmountReceived = 0;
-                        //Need to save this modified (confirmedOnlinePayment) payment object to db upon Paypal failure. 
-                        //The following line doesn't work:
-                        //Models.Payment.UpdateFailedPayment(confirmedOnlinePayment);
-                        //How to call a method in a different class?
 
-                        return View("FailureView");
+                        //Ok below?:
+                        var testOK5 = confirmedOnlinePayment;
+
+                        //try this:
+                        return RedirectToAction("UpdateReportFailedOnlinePayment", "Payments", confirmedOnlinePayment);
+                        //instead of:
+                        //return View("FailureView");
                     }
                 }
             }
@@ -239,10 +241,11 @@ namespace HazeltineStorage.Controllers
                 //Logger.log("Error" + ex.Message);
                 return View("FailureView");
             }
-            var successfulOnlinePaymentId = confirmedOnlinePaymentId;
+            //Not Ok below:
+            var testOK6 = confirmedOnlinePayment;
 
             //try this:
-            return RedirectToAction("ReportSuccessfulOnlinePayment", "Payments", successfulOnlinePaymentId);
+            return RedirectToAction("ReportSuccessfulOnlinePayment", "Payments", confirmedOnlinePayment);
             //instead of:
             //return View("SuccessView", successfulOnlinePayment);
         }

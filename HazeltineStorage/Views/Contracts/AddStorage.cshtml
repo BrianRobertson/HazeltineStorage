@@ -4,12 +4,20 @@
 }
 
 
-<h2>Add Storage To Contract</h2>
+<h2>Add Storage</h2>
 
-
+<h4>
+    To Contract for @Html.DisplayFor(model => model.Customer.FirstName) @Html.DisplayFor(model => model.Customer.LastName)
+</h4>
 <p>
-    @Model.Contract.Id
+    @Html.DisplayNameFor(model => model.Contract.StartDate) @Html.DisplayFor(model => model.Contract.StartDate)
 </p>
+<p>
+    @Html.DisplayNameFor(model => model.Contract.EndDate) @Html.DisplayFor(model => model.Contract.EndDate)
+</p>
+
+
+
 @* To correct formatting issues, Use this syntax: *@
 @Html.DisplayFor(model => model.Contract.StartDate)
 <br />

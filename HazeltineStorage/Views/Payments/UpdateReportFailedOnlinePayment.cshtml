@@ -1,0 +1,24 @@
+﻿@model HazeltineStorage.Models.Payment
+
+@{
+    ViewBag.Title = "Report Failed Online Payment";
+}
+
+<h2>Report Failed Online Payment</h2>
+
+
+
+<h2>
+    We're sorry, your payment did not process at this time.
+
+    Payment received is: $ @Html.DisplayFor(model => model.AmountReceived)
+</h2>
+<p>
+    Test this alternate formating of Amount:  @Model.AmountReceived
+    Please try again, or contact Hazeltine Storage to report this issue and/or make other payment arrangements.
+</p>
+
+
+<br />
+
+@Html.ActionLink("Return to Your Account", "Manage", "Customers", new { id = Model.CustomerId }, null)

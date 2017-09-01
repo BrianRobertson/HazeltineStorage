@@ -9,12 +9,11 @@
 
 
 <h2>
-    Thank you for your payment of
-
-    @Html.DisplayFor(model => model.AmountReceived)
+    Thank you for your payment of $@Html.DisplayFor(model => model.AmountReceived)
 </h2>
 <p>
-    @Model.AmountReceived
+    The payment actually worked but the payment object is not properly passed to this view, therefore it shows:
+    @Model.AmountReceived as the payment received.
 </p>
 
 <br />

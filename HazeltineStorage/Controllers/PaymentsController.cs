@@ -169,29 +169,34 @@ namespace HazeltineStorage.Controllers
             return View(payment);
         }
 
-        // GET: Payments/ReportOnlinePaymentSuccess/Payment Object
-        public ActionResult ReportSuccessfulOnlinePayment(int successfulOnlinePaymentId)
+        // GET: Payments/ReportsuccessfulOnlinePayment/Payment Object
+        public ActionResult ReportSuccessfulOnlinePayment(Payment successfulOnlinePayment)
         {
-            Payment successfulOnlinePayment = db.Payments.Find(successfulOnlinePaymentId);
+            //Payment successfulOnlinePayment = db.Payments.Find(successfulOnlinePayment);
             return View(successfulOnlinePayment);
         }
 
 
-        // POST: Payments/UpdateFailedPayment, for when Paypal doesn't approve transaction.
+        // POST: Payments/UpdateFailedOnlinePayment, for when Paypal doesn't approve transaction.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public void UpdateFailedPayment([Bind(Include = "Id,CustomerId,ReceivedDate,PaymentTypeId,AmountReceived,Notes,DepositDate")]Payment revisedOnlinePaymentRecord)
+        public ActionResult UpdateReportFailedOnlinePayment([Bind(Include = "Id,CustomerId,ReceivedDate,PaymentTypeId,AmountReceived,Notes,DepositDate")]Payment failedOnlinePayment)
         {
-            //if (ModelState.IsValid)
-            //{
-                db.Entry(revisedOnlinePaymentRecord).State = EntityState.Modified;
+            if (ModelState.IsValid)
+            {
+                failedOnlinePayment.Notes = "Attempted payment of: $" + failedOnlinePayment.AmountReceived.ToString() + " was not approved by Paypal.";
+                failedOnlinePayment.AmountReceived = 0;
+
+                db.Entry(failedOnlinePayment).State = EntityState.Modified;
                 db.SaveChanges();
 
-            //UpdateCustomerBalance helper method:
-            UpdateCustomerBalance(revisedOnlinePaymentRecord.CustomerId);
+                //UpdateCustomerBalance helper method:
+                UpdateCustomerBalance(failedOnlinePayment.CustomerId);
 
-            //return RedirectToAction("Index");
-            //}
+                return View(failedOnlinePayment);
+                //return RedirectToAction("Index");
+            }
+            return View(failedOnlinePayment);
         }
 
         // GET: Payments/Edit/5
