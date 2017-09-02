@@ -58,7 +58,8 @@
                 @Html.ActionLink("Edit", "Edit", "Contracts", new { id=contract.Id }, null) |
                 @Html.ActionLink("Details", "Details", "Contracts", new { id=contract.Id }, null) |
                 @Html.ActionLink("Delete", "Delete", "Contracts", new { id=contract.Id }, null) |
-                @Html.ActionLink("Add Storage Units", "AddStorage", "Contracts", new { id = contract.Id }, null)
+                @Html.ActionLink("Add Storage", "AddStorage", "Contracts", new { id = contract.Id }, null) |
+                @Html.ActionLink("View Contract", "PrintableContract", "Contracts", new { id = contract.Id }, null)
             </td>
         </tr>
     }

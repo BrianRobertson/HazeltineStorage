@@ -416,6 +416,7 @@
     <Content Include="Views\Payments\CreateForThisCustomer.cshtml" />
     <Content Include="Views\Payments\ReportSuccessfulOnlinePayment.cshtml" />
     <Content Include="Views\Payments\UpdateReportFailedOnlinePayment.cshtml" />
+    <Content Include="Views\Contracts\PrintableContract.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

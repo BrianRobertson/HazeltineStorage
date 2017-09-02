@@ -1,10 +1,9 @@
 ﻿@model HazeltineStorage.ViewModels.ContractBuilderViewModel
 @{
-    ViewBag.Title = "Add Storage";
+    ViewBag.Title = "Printable Contract";
 }
 
-
-<h2>Add Storage</h2>
+<h2>Contract</h2>
 
 <div>
     <h4>
@@ -68,23 +67,23 @@
             @Html.DisplayNameFor(su => su.StorageUnits.First().RentalRate)
         </th>
     </tr>
-                @foreach (var storageUnit in Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id))
-                {
-                    <tr>
-                        <td>
-                            @storageUnit.UnitNumber
-                        </td>
-                        <td>
-                            @storageUnit.UnitDescription
-                        </td>
-                        <td>
-                            @storageUnit.TermAtRate
-                        </td>
-                        <td>
-                            @storageUnit.RentalRate
-                        </td>
-                    </tr>
-                }
+    @foreach (var storageUnit in Model.StorageUnits.Where(su => su.ContractId == Model.Contract.Id))
+    {
+        <tr>
+            <td>
+                @storageUnit.UnitNumber
+            </td>
+            <td>
+                @storageUnit.UnitDescription
+            </td>
+            <td>
+                @storageUnit.TermAtRate
+            </td>
+            <td>
+                @storageUnit.RentalRate
+            </td>
+        </tr>
+    }
     <tr>
         <th>
             <p>Total Units Contracted</p>
@@ -108,20 +107,20 @@
 </table>
 
 
-            @using (Html.BeginForm("AddStorage", "Contracts", FormMethod.Post))//removed from arguments: new { viewModel = Model}
+@*@using (Html.BeginForm("AddStorage", "Contracts", FormMethod.Post))//removed from arguments: new { viewModel = Model}
             {
-                @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-                <div class="form-group">
-                    @Html.LabelFor(su => su.StorageUnits)
-                    @Html.DropDownListFor(ssui => ssui.SelectedStorageUnitId, new SelectList(Model.StorageUnits, "Id", "UnitNumber"), "Select Storage Unit To Add", new { @class = "form-control" })
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(su => su.StorageUnits)
+        @Html.DropDownListFor(ssui => ssui.SelectedStorageUnitId, new SelectList(Model.StorageUnits, "Id", "UnitNumber"), "Select Storage Unit To Add", new { @class = "form-control" })
+    </div>
 
                 @Html.HiddenFor(m => m.Contract.Id)
                 @Html.HiddenFor(m => m.Customer.Id)
 
                 <button type="submit" class="btn-primary">Add Storage</button>
-            }
+}*@
 
 <br />
 <div>

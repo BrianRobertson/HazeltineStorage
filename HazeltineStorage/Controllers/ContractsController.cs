@@ -201,6 +201,40 @@ namespace HazeltineStorage.Controllers
                                                           // or View(viewModel);
         }
 
+
+        public ActionResult PrintableContract(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contract contract = db.Contracts.Find(id);
+
+            if (contract == null)
+            {
+                return HttpNotFound();
+            }
+
+            int customerId = contract.CustomerId;
+            Customer customer = db.Customers.Find(customerId);
+            var storageUnits = db.StorageUnits.ToList();
+            //I want to create a list of only storage units assigned to this contract but the following line doesn't work:
+            //var storageUnits = db.StorageUnits.Where(ContractId == contract.Id).ToList();
+
+            var viewModel = new ContractBuilderViewModel
+            //(contract, customer, storageUnits);
+            {
+                Contract = contract,
+                Customer = customer,
+                StorageUnits = storageUnits
+            };
+
+            //ViewBag.storageUnits = new SelectList(db.StorageUnits, "Id", "UnitNumber", storageUnits);
+
+            return View(viewModel);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
