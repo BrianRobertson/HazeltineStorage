@@ -13,9 +13,16 @@ namespace HazeltineStorage.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult StorageOptions()
         {
             ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your company description page.";
 
             return View();
         }

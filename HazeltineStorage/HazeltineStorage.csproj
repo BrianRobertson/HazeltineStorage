@@ -302,6 +302,8 @@
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\DougSueHazeltine.jpg" />
+    <Content Include="Content\Images\HazeltineStorageBuilding.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -417,10 +419,10 @@
     <Content Include="Views\Payments\ReportSuccessfulOnlinePayment.cshtml" />
     <Content Include="Views\Payments\UpdateReportFailedOnlinePayment.cshtml" />
     <Content Include="Views\Contracts\PrintableContract.cshtml" />
+    <Content Include="Views\Home\StorageOptions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

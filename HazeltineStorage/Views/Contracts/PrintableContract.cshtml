@@ -3,30 +3,33 @@
     ViewBag.Title = "Printable Contract";
 }
 
-<h2>Contract</h2>
-
-
-
-<div>
-    <img src="~/Content/Images/HazeltineStorageBuilding.png" />
+<div class="row">
+    <div class="col-md-2">
+        <br />
+        <br />
+        <img src="~/Content/Images/HazeltineStorageBuilding.png" alt="Hazeltine Storage Building" width="150" />
+    </div>
+    <div class="col-md-4">
+        <h3><b>Hazeltine Storage LLC</b></h3>
+        <h5>11499 Dallman Road</h5>
+        <h5>Edgerton, WI 53534</h5>
+        <h5>608-884-8992</h5>
+    </div>
+    <div class="col-md-6">
+        <center>
+            <bold>
+                <h2>Contract</h2>
+            </bold>
+        </center>
+    </div>
 </div>
 
 
 
-
-
-
-
-
 <div>
-    <h4>
-        To Contract for @Html.DisplayFor(model => model.Customer.FirstName) @Html.DisplayFor(model => model.Customer.LastName)
-    </h4>
     <hr />
-
     <div class="row">
-
-        <div class="col-md-4">
+        <div class="col-md-6">
             <dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.Contract.StartDate)
@@ -40,18 +43,12 @@
                 <dd>
                     @Html.DisplayFor(model => model.Contract.EndDate)
                 </dd>
-            </dl>
-        </div>
-
-        <div class="col-md-8">
-            <dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.Contract.DayOfMonthDue)
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Contract.DayOfMonthDue)
                 </dd>
-
                 <dt>
                     Grace Period Ends
                     @*@Html.DisplayNameFor(model => model.Contract.DayOfMonthGracePeriodEnds)*@
@@ -61,7 +58,57 @@
                 </dd>
             </dl>
         </div>
+
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    Lessee:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.FirstName) @Html.DisplayFor(model => model.Customer.LastName)
+                </dd>
+                <dt>
+                    @*Address*@
+                    @*@Html.DisplayNameFor(model => model.Customer.Address1)*@
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.Address1)
+                </dd>
+                <dt>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.Address2)
+                </dd>
+                <dt>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.City), @Html.DisplayFor(model => model.Customer.State) @Html.DisplayFor(model => model.Customer.Zip)
+                </dd>
+            </dl>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Customer.MainPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.MainPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Customer.MobilePhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.MobilePhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Customer.EmailAddress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Customer.EmailAddress)
+                </dd>
+            </dl>
+        </div>
     </div>
+    <hr />
 </div>
 
 
@@ -99,12 +146,12 @@
     }
     <tr>
         <th>
-            <p>Total Units Contracted</p>
+            Total Units On Contract
         </th>
         <th></th>
         <th></th>
         <th>
-            <p>Total Contracted Rate</p>
+            Total Contract Rate
         </th>
     </tr>
     <tr>
@@ -120,23 +167,65 @@
 </table>
 
 
-@*@using (Html.BeginForm("AddStorage", "Contracts", FormMethod.Post))//removed from arguments: new { viewModel = Model}
-            {
-    @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        @Html.LabelFor(su => su.StorageUnits)
-        @Html.DropDownListFor(ssui => ssui.SelectedStorageUnitId, new SelectList(Model.StorageUnits, "Id", "UnitNumber"), "Select Storage Unit To Add", new { @class = "form-control" })
+<div class="row">
+    <div class="col-md-12">
+        As lessee, I @Html.DisplayFor(model => model.Customer.FirstName) @Html.DisplayFor(model => model.Customer.LastName)
+        agree to lease the above mentioned storage for a monthly total of $@Model.Contract.ContractTotal to be paid to Hazeltine Storage LLC by day
+        @Html.DisplayFor(model => model.Contract.DayOfMonthDue) of each month. I agree that failure to pay by day
+        @Html.DisplayFor(model => model.Contract.DayOfMonthGracePeriodEnds) of that month will result in late fee of $10.00 to be added to my account.
+        I also understand and agree to the following:
+        <br />
     </div>
-
-                @Html.HiddenFor(m => m.Contract.Id)
-                @Html.HiddenFor(m => m.Customer.Id)
-
-                <button type="submit" class="btn-primary">Add Storage</button>
-}*@
-
-<br />
-<div>
-    @Html.ActionLink("Return To Manage This Customer", "Manage", "Customers", new { id = Model.Customer.Id }, null)
-    @*@Html.ActionLink("Back to List", "Index")*@
 </div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul>
+            <li>Storage hours are 6:00 AM to 8:00 PM.</li>
+            <li>Lessee is responsible for insuring the contents they are storing.</li>
+            <li>Hazeltine Storage LLC assumes no responsibility for lessee's property.</li>
+            <li>No smoking is allowed in or around storage buildings.</li>
+            <li>No storing of gas, fuel oil, tires, or any other explosive material.</li>
+            <li>Units are for storage only and may not be used for any other purpose.</li>
+            <li>Any payments not received by grace period ending date shown above will be charged a late fee of $10.</li>
+            <li>
+                FAILURE TO PAY RENT WILL RESULT IN DEFAULT OF LEASE.
+                <br />
+                WISCONSIN STATUTES FOR STORAGE #704.90 (b)
+                THE OPERATOR HAS A LIEN ON PERSONAL PROPERTY STORED IN A LEASED SPACE AND THAT THE OPERATOR MAY SATISFY THE LIEN BY SELLING THE PERSONAL PROPERTY, AS PROVIDED IN
+                THIS SECTION, IF THE LESSEE DEFAULTS OR FAILS TO PAY RENT FOR THE STORAGE OF PERSONAL PROPERTY ABANDONED AFTER THE TERMINATION OF THE RENTAL AGREEMENT.
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-9">
+        @Html.DisplayFor(model => model.Customer.FirstName) @Html.DisplayFor(model => model.Customer.LastName):
+        <hr />
+    </div>
+    <div class="col-md-3">
+        Date:
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9">
+        Hazeltine Storage LLC:
+        <hr />
+    </div>
+    <div class="col-md-3">
+        Date:
+        <hr />
+    </div>
+</div>
+
+
+        <br />
+        <div>
+            @Html.ActionLink("Return To This Customer", "Manage", "Customers", new { id = Model.Customer.Id }, null)
+            @*@Html.ActionLink("Back to List", "Index")*@
+        </div>

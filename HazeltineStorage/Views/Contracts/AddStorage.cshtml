@@ -125,6 +125,7 @@
 
 <br />
 <div>
-    @Html.ActionLink("Return To Manage This Customer", "Manage", "Customers", new { id = Model.Customer.Id }, null)
+    @Html.ActionLink("Return To This Customer", "Manage", "Customers", new { id = Model.Customer.Id }, null) |
+    @Html.ActionLink("View Printable Contract", "PrintableContract", "Contracts", new { id = Model.Contract.Id }, null)
     @*@Html.ActionLink("Back to List", "Index")*@
 </div>
