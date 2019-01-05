@@ -42,8 +42,11 @@
                     }
 
                 </ul>
-                @* The following line of code is commented out in order to not allow Register and Login to appear on website. *@
-                @*@Html.Partial("_LoginPartial")*@
+                @* 180105 In the production code as published on Azure, 
+                    the following line of code is commented out so "Register" and "Login" DO NOT appear on website.
+                    In the development code as published to Github, 
+                    that same line is not commented out so they DO appear on website to allow continued development and testing.*@
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
